@@ -1,22 +1,22 @@
 const l = [
-  "/_app/immutable/start-8eb4aa0f.js",
+  "/_app/immutable/start-c303f817.js",
   "/_app/immutable/components/layout.svelte-0d3dbdca.js",
-  "/_app/immutable/components/error.svelte-efd5c386.js",
-  "/_app/immutable/components/pages/_page.svelte-6592916e.js",
-  "/_app/immutable/assets/_page-f72a90bf.css",
+  "/_app/immutable/components/error.svelte-60c19458.js",
+  "/_app/immutable/components/pages/_page.svelte-3f531167.js",
+  "/_app/immutable/assets/_page-b6a07b84.css",
   "/_app/immutable/modules/pages/_layout.js-7b9cbfbc.js",
-  "/_app/immutable/chunks/singletons-793df22e.js",
+  "/_app/immutable/chunks/singletons-40129fa6.js",
   "/_app/immutable/chunks/preload-helper-aa6bc0ce.js",
   "/_app/immutable/chunks/index-6a903410.js",
   "/_app/immutable/chunks/_layout-8d2a742b.js",
   "/_app/immutable/chunks/0-f980f9e6.js",
-  "/_app/immutable/chunks/1-b4864d40.js",
-  "/_app/immutable/chunks/2-f058acb7.js",
+  "/_app/immutable/chunks/1-6d0d5ca2.js",
+  "/_app/immutable/chunks/2-5fe8286f.js",
   "/_app/immutable/chunks/codejar-f2b93de5.js",
   "/_app/immutable/chunks/prism-1372a240.js"
 ], h = [
   "/favicon.png"
-], n = "1664957452885", o = `cache${n}`, i = l.concat(h), u = new Set(i);
+], n = "1664969757128", o = `cache${n}`, i = l.concat(h), u = new Set(i);
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(o).then((s) => s.addAll(i)).then(() => {
