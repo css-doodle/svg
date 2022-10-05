@@ -126,11 +126,11 @@ export default {
 
   '99 bottles of beer': indent(`
     svg {
-      viewBox: 0 0 50 1200;
+      viewBox: 0 0 50 750;
       overflow: visible;
       foreignObject {
         width, height: 100%;
-        font-size: 2;
+        font-size: 1.5;
         p*99-1 {
           content: "
             @n bottles of beer on the wall, <br />
