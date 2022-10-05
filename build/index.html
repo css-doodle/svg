@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+    <title>SVG playground</title>
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_page-f72a90bf.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/start-8eb4aa0f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-aa6bc0ce.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-6a903410.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-793df22e.js">
+		<link rel="modulepreload" href="./_app/immutable/components/layout.svelte-0d3dbdca.js">
+		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-7b9cbfbc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-8d2a742b.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-6592916e.js">
+		<script>
+			if ('serviceWorker' in navigator) {
+				addEventListener('load', function () {
+					navigator.serviceWorker.register('./service-worker.js');
+				});
+			}
+		</script>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+	</head>
+	<body>
+		
+
+
+<main class="svelte-1kvcih6"><div class="editor svelte-1kvcih6"><header class="editor-header svelte-1kvcih6"><h1 class="svelte-1kvcih6"><a href="https://yuanchuan.dev/experimenting-a-new-syntax-to-write-svg" target="_blank" class="svelte-1kvcih6">New Syntax To Write SVG
+          <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svelte-1vv9v21"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a></h1>
+      <select class="svelte-1kvcih6"><option value="svg {
+  viewBox: .5 .5 10 10;
+  stroke: #1B2D37;
+  stroke-width: .04;
+
+  circle*10x10 {
+    fill: @p(yellow, blueviolet, deeppink);
+    cx, cy: @nx, @ny;
+    r: @r(.05, .48);
+    style animation: scale @r(2s) reverse;
+  }
+
+  style {
+    @keyframes scale {
+      to { r: 0 }
+    }
+  }
+}">grid</option><option value="svg {
+  viewBox: 0 0 10 10;
+  stroke: black;
+  stroke-width: .1;
+  rect {
+    x: 8;
+    y: 8;
+    width: 1;
+    height: 1;
+    fill: yellow;
+    style transform-box: fill-box;
+    transform-origin: center;
+    transform: rotate(45);
+  }
+  circle {
+    fill: deepskyblue;
+    cx: 4;
+    cy: 4;
+    r: 3
+  }
+}">basic</option><option value="svg {
+  viewBox: -50 -50 100 100;
+  path*6 {
+    transform: rotate(@calc(@n*60));
+    stroke-linecap: round;
+    stroke: black;
+    d: M 0 0 0 44
+       @M2x3(M 0 @calc(-9*@ny)
+             L @pn(±9) @calc(-10*@ny - 5.8));
+  }
+}">snowflake</option><option value="svg {
+  viewBox: -58 -57 114 114;
+  stroke-width: .15;
+  stroke: #1B2D37;
+  fill: #D5F1FF;
+  circle*720 {
+    r: @calc(sin(π/@N*@n)*10);
+    cx, cy: @Plot(
+      r: 40+sin(4t)*5+sin(12t)*5
+    );
+  }
+}">wavy</option><option value="svg {
+  viewBox: 0 0 10 10.1;
+  stroke: #000;
+  stroke-width: .1;
+  stroke-dasharray: 100;
+  stroke-linecap: round;
+
+  path*3 {
+    style animation: move @r(2s, 4s) reverse;
+    fill: none;
+    d: @pn(M 5 10 Q 5 5 8 1,
+           M 5 10 Q 4 5 2 4,
+           M 5 10 Q 6 6 8 4);
+  }
+  circle*3 {
+    style animation: scale @r(1s, 2s) reverse;
+    fill: @pn(yellow, blueviolet, deeppink);
+    cx, cy: @pn(8 1, 2 4, 8 4);
+    r: @r(.2, .5);
+  }
+
+  style {
+    @keyframes move {
+      to { stroke-dashoffset: 100 }
+    }
+    @keyframes scale {
+      to { r: 0 }
+    }
+  }
+}">flower</option><option value="svg {
+  viewBox: -50 -50 100 100;
+  polygon {
+    stroke: #000;
+    points: @m10.@Plot(
+      r: seq(20, 40);
+      rotate: 18;
+    );
+    fill: defs linearGradient {
+      gradientTransform: rotate(30);
+      stop { offset: 50%; stop-color: deeppink }
+      stop { offset: 100%; stop-color: yellow }
+    }
+  }
+}">star</option></select></header>
+    <div class="editor-container svelte-1kvcih6"><div class="svelte-1wcvvzi"></div></div></div>
+
+  <div class="preview svelte-1kvcih6"><header class="preview-header svelte-1kvcih6"><button class="svelte-1kvcih6 active">Preview</button>
+      <button class="svelte-1kvcih6">SVG</button></header>
+    <div class="preview-graph svelte-1kvcih6"><!-- HTML_TAG_START --><svg xmlns="http://www.w3.org/2000/svg" viewBox=".5 .5 10 10" stroke="#1B2D37" stroke-width=".04"><circle fill="deeppink" cx="1" cy="1" r="0.21408205045259537" style="animation:scale 0.42750025597833524s reverse;"></circle><circle fill="yellow" cx="2" cy="1" r="0.29033786473816714" style="animation:scale 0.32487391354992606s reverse;"></circle><circle fill="yellow" cx="3" cy="1" r="0.05801351915663272" style="animation:scale 0.3468480008894543s reverse;"></circle><circle fill="deeppink" cx="4" cy="1" r="0.09384589039070851" style="animation:scale 1.326561361663437s reverse;"></circle><circle fill="deeppink" cx="5" cy="1" r="0.20508425366023703" style="animation:scale 0.8707819295739833s reverse;"></circle><circle fill="yellow" cx="6" cy="1" r="0.2477889159868873" style="animation:scale 1.3428675675229615s reverse;"></circle><circle fill="deeppink" cx="7" cy="1" r="0.3152202454186499" style="animation:scale 0.9380433205043832s reverse;"></circle><circle fill="yellow" cx="8" cy="1" r="0.38955579507456933" style="animation:scale 0.4830751854200996s reverse;"></circle><circle fill="blueviolet" cx="9" cy="1" r="0.06549437088702983" style="animation:scale 0.44404743853358664s reverse;"></circle><circle fill="deeppink" cx="10" cy="1" r="0.15249976788628067" style="animation:scale 0.28192850089131505s reverse;"></circle><circle fill="yellow" cx="1" cy="2" r="0.2124461562304526" style="animation:scale 0.5943650488387315s reverse;"></circle><circle fill="yellow" cx="2" cy="2" r="0.25664392618919835" style="animation:scale 1.731462118789215s reverse;"></circle><circle fill="yellow" cx="3" cy="2" r="0.30509003863753337" style="animation:scale 0.5589599651132342s reverse;"></circle><circle fill="yellow" cx="4" cy="2" r="0.46469373667592145" style="animation:scale 0.6861342286689804s reverse;"></circle><circle fill="deeppink" cx="5" cy="2" r="0.28369503891058023" style="animation:scale 0.5142352596461979s reverse;"></circle><circle fill="yellow" cx="6" cy="2" r="0.10974598841752253" style="animation:scale 0.12392650486516238s reverse;"></circle><circle fill="yellow" cx="7" cy="2" r="0.185033748013408" style="animation:scale 0.4257488098561626s reverse;"></circle><circle fill="yellow" cx="8" cy="2" r="0.3485167721555399" style="animation:scale 1.6936328439343393s reverse;"></circle><circle fill="deeppink" cx="9" cy="2" r="0.296717906396581" style="animation:scale 0.7213821180760087s reverse;"></circle><circle fill="blueviolet" cx="10" cy="2" r="0.4238107898831326" style="animation:scale 1.3071047765781347s reverse;"></circle><circle fill="blueviolet" cx="1" cy="3" r="0.285582839356153" style="animation:scale 0.8398325584673524s reverse;"></circle><circle fill="yellow" cx="2" cy="3" r="0.17434226388480278" style="animation:scale 1.7527285099731587s reverse;"></circle><circle fill="blueviolet" cx="3" cy="3" r="0.20018337198649228" style="animation:scale 1.4332689778720915s reverse;"></circle><circle fill="yellow" cx="4" cy="3" r="0.4067724609524556" style="animation:scale 0.5670729467507803s reverse;"></circle><circle fill="deeppink" cx="5" cy="3" r="0.42922149673444304" style="animation:scale 0.43425782450629125s reverse;"></circle><circle fill="yellow" cx="6" cy="3" r="0.14371845619457774" style="animation:scale 0.6791959458555735s reverse;"></circle><circle fill="blueviolet" cx="7" cy="3" r="0.24676258096613596" style="animation:scale 1.5161205139960925s reverse;"></circle><circle fill="deeppink" cx="8" cy="3" r="0.4260861472578738" style="animation:scale 0.10119494417632878s reverse;"></circle><circle fill="deeppink" cx="9" cy="3" r="0.46349118752639834" style="animation:scale 1.1653250496867167s reverse;"></circle><circle fill="deeppink" cx="10" cy="3" r="0.16420855033158815" style="animation:scale 0.8905671206024345s reverse;"></circle><circle fill="yellow" cx="1" cy="4" r="0.07676905159562405" style="animation:scale 1.2001106794582757s reverse;"></circle><circle fill="blueviolet" cx="2" cy="4" r="0.4537917071407534" style="animation:scale 1.2411383623631005s reverse;"></circle><circle fill="yellow" cx="3" cy="4" r="0.20832650078969717" style="animation:scale 0.023546546143582064s reverse;"></circle><circle fill="deeppink" cx="4" cy="4" r="0.22587155805137143" style="animation:scale 1.3305480625029873s reverse;"></circle><circle fill="yellow" cx="5" cy="4" r="0.12577522003060854" style="animation:scale 0.9332955974069541s reverse;"></circle><circle fill="deeppink" cx="6" cy="4" r="0.1984550392698286" style="animation:scale 1.3495746224879426s reverse;"></circle><circle fill="yellow" cx="7" cy="4" r="0.22241378458687694" style="animation:scale 0.8240294028289324s reverse;"></circle><circle fill="blueviolet" cx="8" cy="4" r="0.18109085753215576" style="animation:scale 0.7862621461549053s reverse;"></circle><circle fill="deeppink" cx="9" cy="4" r="0.3293840025634787" style="animation:scale 1.9605522655547443s reverse;"></circle><circle fill="deeppink" cx="10" cy="4" r="0.2925969416540101" style="animation:scale 1.5335586044754006s reverse;"></circle><circle fill="blueviolet" cx="1" cy="5" r="0.09118126128512016" style="animation:scale 0.981679595468941s reverse;"></circle><circle fill="deeppink" cx="2" cy="5" r="0.42589071628117575" style="animation:scale 1.598366008319689s reverse;"></circle><circle fill="blueviolet" cx="3" cy="5" r="0.09793202270476523" style="animation:scale 1.766174437970134s reverse;"></circle><circle fill="deeppink" cx="4" cy="5" r="0.18988601371037395" style="animation:scale 1.5565691677109659s reverse;"></circle><circle fill="yellow" cx="5" cy="5" r="0.08211168648965883" style="animation:scale 0.3812733599482883s reverse;"></circle><circle fill="deeppink" cx="6" cy="5" r="0.23608740115861615" style="animation:scale 1.9216313065219464s reverse;"></circle><circle fill="yellow" cx="7" cy="5" r="0.2830989181186849" style="animation:scale 1.6021475037184332s reverse;"></circle><circle fill="blueviolet" cx="8" cy="5" r="0.22899289429771025" style="animation:scale 0.2396847726757227s reverse;"></circle><circle fill="blueviolet" cx="9" cy="5" r="0.32570174952157394" style="animation:scale 0.5649710168525954s reverse;"></circle><circle fill="yellow" cx="10" cy="5" r="0.06112621012112465" style="animation:scale 0.4362868564621231s reverse;"></circle><circle fill="blueviolet" cx="1" cy="6" r="0.26890882197041416" style="animation:scale 0.5310898930539019s reverse;"></circle><circle fill="deeppink" cx="2" cy="6" r="0.12347747789418037" style="animation:scale 1.5235388368548695s reverse;"></circle><circle fill="deeppink" cx="3" cy="6" r="0.12248631070404042" style="animation:scale 1.0451783734582536s reverse;"></circle><circle fill="yellow" cx="4" cy="6" r="0.352627889127961" style="animation:scale 0.7461562369297615s reverse;"></circle><circle fill="yellow" cx="5" cy="6" r="0.3167962671267486" style="animation:scale 1.6957400419161686s reverse;"></circle><circle fill="deeppink" cx="6" cy="6" r="0.46112709096623106" style="animation:scale 1.5537120698869058s reverse;"></circle><circle fill="yellow" cx="7" cy="6" r="0.2715300434589586" style="animation:scale 0.40282846898009844s reverse;"></circle><circle fill="deeppink" cx="8" cy="6" r="0.2951475517340834" style="animation:scale 1.7727556000296427s reverse;"></circle><circle fill="blueviolet" cx="9" cy="6" r="0.27920867610005046" style="animation:scale 0.16351298751147256s reverse;"></circle><circle fill="yellow" cx="10" cy="6" r="0.22607751917770258" style="animation:scale 1.8309556731262637s reverse;"></circle><circle fill="yellow" cx="1" cy="7" r="0.350606737425694" style="animation:scale 0.4062624860996552s reverse;"></circle><circle fill="yellow" cx="2" cy="7" r="0.4630137483157157" style="animation:scale 0.7435856168334936s reverse;"></circle><circle fill="yellow" cx="3" cy="7" r="0.09477638796457111" style="animation:scale 1.319358559713252s reverse;"></circle><circle fill="deeppink" cx="4" cy="7" r="0.1834037624902929" style="animation:scale 0.1309624853354058s reverse;"></circle><circle fill="yellow" cx="5" cy="7" r="0.3883274449275009" style="animation:scale 0.665279902951312s reverse;"></circle><circle fill="blueviolet" cx="6" cy="7" r="0.37311944850860324" style="animation:scale 0.5474562559626116s reverse;"></circle><circle fill="yellow" cx="7" cy="7" r="0.09712563711249791" style="animation:scale 1.8840416303139826s reverse;"></circle><circle fill="deeppink" cx="8" cy="7" r="0.3145919255867971" style="animation:scale 1.283123233945661s reverse;"></circle><circle fill="yellow" cx="9" cy="7" r="0.24946107294820974" style="animation:scale 1.0562285305082026s reverse;"></circle><circle fill="blueviolet" cx="10" cy="7" r="0.22877777355089884" style="animation:scale 1.241446698361449s reverse;"></circle><circle fill="deeppink" cx="1" cy="8" r="0.4379437839054881" style="animation:scale 0.7138893629509566s reverse;"></circle><circle fill="deeppink" cx="2" cy="8" r="0.07147163327096612" style="animation:scale 0.06954478718497896s reverse;"></circle><circle fill="blueviolet" cx="3" cy="8" r="0.2750704659881808" style="animation:scale 1.0787254961245294s reverse;"></circle><circle fill="yellow" cx="4" cy="8" r="0.1219526975882872" style="animation:scale 0.4332865639525569s reverse;"></circle><circle fill="yellow" cx="5" cy="8" r="0.3556177283235692" style="animation:scale 1.554769379173636s reverse;"></circle><circle fill="deeppink" cx="6" cy="8" r="0.2694843295289564" style="animation:scale 1.9348634907556093s reverse;"></circle><circle fill="blueviolet" cx="7" cy="8" r="0.3535071269432625" style="animation:scale 0.12334799333875203s reverse;"></circle><circle fill="yellow" cx="8" cy="8" r="0.3761796437806182" style="animation:scale 1.11765633526852s reverse;"></circle><circle fill="blueviolet" cx="9" cy="8" r="0.4198385409681633" style="animation:scale 1.7237498915745277s reverse;"></circle><circle fill="yellow" cx="10" cy="8" r="0.20681239246762495" style="animation:scale 0.4209987878173507s reverse;"></circle><circle fill="yellow" cx="1" cy="9" r="0.4175471064525668" style="animation:scale 0.9700389733666213s reverse;"></circle><circle fill="yellow" cx="2" cy="9" r="0.2501397013176571" style="animation:scale 0.34984428602019696s reverse;"></circle><circle fill="blueviolet" cx="3" cy="9" r="0.4357578105406119" style="animation:scale 0.7008752652748218s reverse;"></circle><circle fill="blueviolet" cx="4" cy="9" r="0.41857058750181514" style="animation:scale 0.6485618335706556s reverse;"></circle><circle fill="blueviolet" cx="5" cy="9" r="0.11159851315387678" style="animation:scale 1.5522108141673892s reverse;"></circle><circle fill="deeppink" cx="6" cy="9" r="0.323207594485812" style="animation:scale 1.280310995298845s reverse;"></circle><circle fill="blueviolet" cx="7" cy="9" r="0.24745957455564693" style="animation:scale 0.6034021360995878s reverse;"></circle><circle fill="blueviolet" cx="8" cy="9" r="0.4504998697330423" style="animation:scale 0.8678948644400964s reverse;"></circle><circle fill="deeppink" cx="9" cy="9" r="0.07742868390476967" style="animation:scale 1.836784223063294s reverse;"></circle><circle fill="deeppink" cx="10" cy="9" r="0.3522126219976328" style="animation:scale 0.8593368350602343s reverse;"></circle><circle fill="blueviolet" cx="1" cy="10" r="0.30185375409265597" style="animation:scale 1.660689852466079s reverse;"></circle><circle fill="blueviolet" cx="2" cy="10" r="0.1480615939757972" style="animation:scale 0.21128040623775116s reverse;"></circle><circle fill="deeppink" cx="3" cy="10" r="0.42727436036318295" style="animation:scale 1.7262649832221375s reverse;"></circle><circle fill="yellow" cx="4" cy="10" r="0.46832272347793347" style="animation:scale 1.594771267812267s reverse;"></circle><circle fill="yellow" cx="5" cy="10" r="0.05534288565282028" style="animation:scale 1.6836179782265313s reverse;"></circle><circle fill="deeppink" cx="6" cy="10" r="0.4698055175693201" style="animation:scale 1.0480513462036771s reverse;"></circle><circle fill="yellow" cx="7" cy="10" r="0.12874865836941599" style="animation:scale 0.34102654154110223s reverse;"></circle><circle fill="deeppink" cx="8" cy="10" r="0.12455933589533036" style="animation:scale 0.5303131172687641s reverse;"></circle><circle fill="blueviolet" cx="9" cy="10" r="0.3720305340195893" style="animation:scale 0.9896359475126805s reverse;"></circle><circle fill="yellow" cx="10" cy="10" r="0.07277250283695055" style="animation:scale 1.2846154926184035s reverse;"></circle><style>@keyframes scale{to{r:0;}}</style></svg><!-- HTML_TAG_END --></div></div>
+</main>
+
+
+		<script type="module" data-sveltekit-hydrate="a2vop5">
+			import { start } from "./_app/immutable/start-8eb4aa0f.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2],
+					params: {},
+					routeId: "",
+					data: (function(a){return [a,a]}(null)),
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="a2vop5"]').parentNode,
+				trailing_slash: "never"
+			});
+		</script>
+	
+	</body>
+</html>
