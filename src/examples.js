@@ -1,0 +1,136 @@
+export default {
+  grid: indent(`
+    svg {
+      viewBox: .5 .5 10 10;
+      stroke: #1B2D37;
+      stroke-width: .04;
+
+      circle*10x10 {
+        fill: @p(yellow, blueviolet, deeppink);
+        cx, cy: @nx, @ny;
+        r: @r(.05, .48);
+        style animation: scale @r(2s) reverse;
+      }
+
+      style {
+        @keyframes scale {
+          to { r: 0 }
+        }
+      }
+    }
+  `),
+
+  basic: indent(`
+    svg {
+      viewBox: 0 0 10 10;
+      stroke: black;
+      stroke-width: .1;
+      rect {
+        x: 8;
+        y: 8;
+        width: 1;
+        height: 1;
+        fill: yellow;
+        style transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(45);
+      }
+      circle {
+        fill: deepskyblue;
+        cx: 4;
+        cy: 4;
+        r: 3
+      }
+    }
+  `),
+
+  snowflake: indent(`
+    svg {
+      viewBox: -50 -50 100 100;
+      path*6 {
+        transform: rotate(@calc(@n*60));
+        stroke-linecap: round;
+        stroke: black;
+        d: M 0 0 0 44
+           @M2x3(M 0 @calc(-9*@ny)
+                 L @pn(±9) @calc(-10*@ny - 5.8));
+      }
+    }
+  `),
+
+  wavy: indent(`
+    svg {
+      viewBox: -58 -57 114 114;
+      stroke-width: .15;
+      stroke: #1B2D37;
+      fill: #D5F1FF;
+      circle*720 {
+        r: @calc(sin(π/@N*@n)*10);
+        cx, cy: @Plot(
+          r: 40+sin(4t)*5+sin(12t)*5
+        );
+      }
+    }
+  `),
+
+  flower: indent(`
+    svg {
+      viewBox: 0 0 10 10.1;
+      stroke: #000;
+      stroke-width: .1;
+      stroke-dasharray: 100;
+      stroke-linecap: round;
+
+      path*3 {
+        style animation: move @r(2s, 4s) reverse;
+        fill: none;
+        d: @pn(M 5 10 Q 5 5 8 1,
+               M 5 10 Q 4 5 2 4,
+               M 5 10 Q 6 6 8 4);
+      }
+      circle*3 {
+        style animation: scale @r(1s, 2s) reverse;
+        fill: @pn(yellow, blueviolet, deeppink);
+        cx, cy: @pn(8 1, 2 4, 8 4);
+        r: @r(.2, .5);
+      }
+
+      style {
+        @keyframes move {
+          to { stroke-dashoffset: 100 }
+        }
+        @keyframes scale {
+          to { r: 0 }
+        }
+      }
+    }
+  `),
+
+  star: indent(`
+    svg {
+      viewBox: -50 -50 100 100;
+      polygon {
+        stroke: #000;
+        points: @m10.@Plot(
+          r: seq(20, 40);
+          rotate: 18;
+        );
+        fill: defs linearGradient {
+          gradientTransform: rotate(30);
+          stop { offset: 50%; stop-color: deeppink }
+          stop { offset: 100%; stop-color: yellow }
+        }
+      }
+    }
+  `)
+
+}
+
+function indent(input) {
+  let temp = input.replace(/^\n+/g, '');
+  let len = temp.length - temp.replace(/^\s+/g, '').length;
+  let result = input.split('\n').map(n => (
+    n.replace(new RegExp(`^\\s{${len}}`, 'g'), '')
+  ));
+  return result.join('\n').trim();
+}
