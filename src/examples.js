@@ -141,6 +141,24 @@ export default {
         }
       }
     }
+  `),
+
+  'window pattern': indent(`
+    svg {
+      viewBox: 0 0 200 200;
+      style border: 1.5vmin solid #1B2D37;
+      path {
+        fill: none;
+        stroke: #1B2D37;
+        stroke-width: 3;
+        stroke-linecap: square;
+        d: M 100 5
+           @p(@p(@p(h-43 v5 h-10 v-5 h-10 v16 h-32 v10 h10 v-26 h-10)
+              @flip.@invert.@reverse.@p)
+             @flipv.@invert.@p)
+           @flip.@p;
+       }
+    }
   `)
 
 }
