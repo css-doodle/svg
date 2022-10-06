@@ -143,6 +143,7 @@
 
   pre {
     white-space: pre-wrap;
+    user-select: all;
     margin: 0;
   }
 
