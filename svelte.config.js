@@ -6,7 +6,10 @@ const config = {
     adapter: adapter(),
     serviceWorker: {
       register: true,
-    }
+    },
+    paths: {
+      base: '/svg'
+    },
   }
 };
 
