@@ -8,8 +8,6 @@ const to_cache = build.concat(files);
 const staticAssets = new Set(to_cache);
 
 self.addEventListener('install', event => {
-
-  console.log(to_cache);
   event.waitUntil(
     caches
       .open(ASSETS)
