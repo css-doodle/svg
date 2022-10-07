@@ -132,12 +132,12 @@ export default {
         width, height: 100%;
         font-size: 2;
         p*99-1 {
-          content: "
+          content: \`
             @n bottles of beer on the wall, <br />
             @n bottles of beer. <br />
             Take one down and pass it around, <br />
             @n(-1) bottles of beer on the wall.
-          ";
+          \`;
         }
       }
     }

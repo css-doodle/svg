@@ -14,7 +14,7 @@
       </select>
     </header>
     <div class="editor-container">
-      <Editor bind:code bind:this={editor} />
+      <Editor {code} bind:this={editor} on:change={handleChange} />
     </div>
   </div>
 
@@ -35,7 +35,7 @@
 
 <script>
   import { svg } from 'css-doodle/generator';
-  import Editor from '../components/editor.svelte';
+  import Editor from '../components/editor/index.svelte';
 
   import examples from '../examples.js';
 
@@ -52,6 +52,10 @@
       result.push({ name, value });
     }
     return result;
+  }
+
+  function handleChange(e) {
+    code = e.detail;
   }
 
   function handleSelect(e) {
@@ -106,6 +110,7 @@
   .editor-container {
     flex: 1;
     overflow: auto;
+    background: var(--dark);
   }
 
   select {
