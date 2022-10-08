@@ -180,18 +180,6 @@ export default {
       g {
         fill: none;
 
-        filter: defs filter {
-          feTurbulence {
-            type: fractalNoise;
-            baseFrequency: .016;
-            seed: @r1000;
-          }
-          feDisplacementMap {
-            in: SourceGraphic;
-            scale: 20;
-          }
-        }
-
         /* lines */
         path*200 {
           stroke: @p(#ff4ea5, yellow, @m5(#fff));
@@ -199,10 +187,21 @@ export default {
           stroke-dasharray: @r(5, 60) @r5;
           d: M 50 120
              Q @Plot(r: 20; move: 20 80)
-               @Plot(r: 125; move: 80 60)
+               @Plot(r: 125; move: 80 60);
         }
       }
 
+      filter: defs filter {
+        feTurbulence {
+          type: fractalNoise;
+          baseFrequency: .03;
+          seed: @r1000;
+        }
+        feDisplacementMap {
+          in: SourceGraphic;
+          scale: 20;
+        }
+      }
     }
   `),
 }
