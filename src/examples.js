@@ -210,41 +210,42 @@ export default {
       viewBox: -5 -5 10 10;
 
       /* for simplicity */
-      style border: 4px solid #1B2D37;
       style border-radius: 50%;
+      style border: .8vmin solid #1B2D37;
+      style background: #f9f8eb;
 
-      fill: none;
       stroke: #1B2D37;
-      stroke-width: .02;
+      stroke-width: .04;
 
       circle*4 {
         cx, cy: @Plot(r: 7.07; rotate: 45);
         r: 5;
+        fill: #76b39d;
       }
 
       circle*8 {
         cx, cy: @Plot(r: 6.23; rotate: @calc(45/2));
         r: @calc(5/2);
+        fill: #05004e;
+
       }
 
       circle*16 {
         cx, cy: @Plot(r: 5.69; rotate: @calc(45/4));
         r: @calc(5/4);
+        fill: #fd5f00;
       }
 
       circle*32 {
         cx, cy: @Plot(r: 5.37; rotate: @calc(45/8));
         r: @calc(5/8);
+        fill: #f9f8eb;
       }
 
       circle*64 {
         cx, cy: @Plot(r: 5.19; rotate: @calc(45/16));
         r: @calc(5/16);
-      }
-
-      circle*128 {
-        cx, cy: @Plot(r: 5.11; rotate: @calc(45/32));
-        r: @calc(5/32);
+        fill: #76b39d;
       }
     }
   `)
