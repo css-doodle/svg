@@ -189,17 +189,17 @@ export default {
              Q @Plot(r: 20; move: 20 80)
                @Plot(r: 125; move: 80 60);
         }
-      }
 
-      filter: defs filter {
-        feTurbulence {
-          type: fractalNoise;
-          baseFrequency: .03;
-          seed: @r1000;
-        }
-        feDisplacementMap {
-          in: SourceGraphic;
-          scale: 20;
+        filter: defs filter {
+          feTurbulence {
+            type: fractalNoise;
+            baseFrequency: .03;
+            seed: @r1000;
+          }
+          feDisplacementMap {
+            in: SourceGraphic;
+            scale: 20;
+          }
         }
       }
     }
