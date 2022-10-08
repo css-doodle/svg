@@ -384,7 +384,6 @@ import{S as ic,i as nc,s as sc,k as Me,l as Pe,m as pe,h as te,n as W,b as pn,H 
         cx, cy: @Plot(r: 6.23; rotate: @calc(45/2));
         r: @calc(5/2);
         fill: #05004e;
-
       }
 
       circle*16 {

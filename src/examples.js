@@ -227,7 +227,6 @@ export default {
         cx, cy: @Plot(r: 6.23; rotate: @calc(45/2));
         r: @calc(5/2);
         fill: #05004e;
-
       }
 
       circle*16 {
