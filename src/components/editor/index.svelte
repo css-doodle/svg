@@ -60,15 +60,12 @@
 
 <style>
   div {
-    font-family: 'Source Code Pro', monospace;
     font-size: 14px;
     font-weight: 400;
     height: 100%;
     letter-spacing: normal;
     line-height: 1.4;
     tab-size: 2;
-    background: #1b2e37;
-    color: #d5f1ff;
   }
 
   @media screen and (max-width: 25.875em) {

@@ -47,10 +47,11 @@ export default {
   snowflake: indent(`
     svg {
       viewBox: -50 -50 100 100;
+      stroke-linecap: round;
+      stroke: #000;
+
       path*6 {
         transform: rotate(@calc(@n*60));
-        stroke-linecap: round;
-        stroke: black;
         d: M 0 0 0 44
            @M2x3(M 0 @calc(-9*@ny)
                  L @pn(±9) @calc(-10*@ny - 5.8));
@@ -164,8 +165,46 @@ export default {
         width, height: 200;
       }
     }
-  `)
+  `),
 
+  lines: indent(`
+    svg {
+      viewBox: 0 0 100 100;
+
+      /* background */
+      rect {
+        fill: #0ce5f2;
+        width, height: 100%;
+      }
+
+      g {
+        fill: none;
+
+        filter: defs filter {
+          feTurbulence {
+            type: fractalNoise;
+            baseFrequency: .016;
+            seed: @r1000;
+          }
+          feDisplacementMap {
+            in: SourceGraphic;
+            scale: 20;
+          }
+        }
+
+        /* lines */
+        path*200 {
+          stroke: @p(#ff4ea5, yellow, @m5(#fff));
+          stroke-width: @r.5;
+          stroke-dasharray: @r(5, 60) @r5;
+          d: M 50 120
+             Q @Plot(r: 20; move: 20 80)
+               @Plot(r: 125; move: 80 60)
+        }
+      }
+
+    }
+  `),
 }
 
 function indent(input) {
