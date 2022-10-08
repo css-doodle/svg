@@ -204,6 +204,50 @@ export default {
       }
     }
   `),
+
+  'hyperbolic circles': indent(`
+    svg {
+      viewBox: -5 -5 10 10;
+
+      /* for simplicity */
+      style border: 4px solid #1B2D37;
+      style border-radius: 50%;
+
+      fill: none;
+      stroke: #1B2D37;
+      stroke-width: .02;
+
+      circle*4 {
+        cx, cy: @Plot(r: 7.07; rotate: 45);
+        r: 5;
+      }
+
+      circle*8 {
+        cx, cy: @Plot(r: 6.23; rotate: @calc(45/2));
+        r: @calc(5/2);
+      }
+
+      circle*16 {
+        cx, cy: @Plot(r: 5.69; rotate: @calc(45/4));
+        r: @calc(5/4);
+      }
+
+      circle*32 {
+        cx, cy: @Plot(r: 5.37; rotate: @calc(45/8));
+        r: @calc(5/8);
+      }
+
+      circle*64 {
+        cx, cy: @Plot(r: 5.19; rotate: @calc(45/16));
+        r: @calc(5/16);
+      }
+
+      circle*128 {
+        cx, cy: @Plot(r: 5.11; rotate: @calc(45/32));
+        r: @calc(5/32);
+      }
+    }
+  `)
 }
 
 function indent(input) {
