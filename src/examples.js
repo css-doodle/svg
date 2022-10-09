@@ -32,19 +32,10 @@ export default {
         r: 3
       }
       rect {
-        x: 8;
-        y: 8;
         width: 1;
         height: 1;
         fill: yellow;
-        transform-origin: 8.5 8.5;
-        transform: rotate(45);
-      }
-      rect {
-        width: 100%;
-        height: 100%;
-        fill: none;
-        stroke-width: .2;
+        transform: translate(8.5 7.8) rotate(45);
       }
     }
   `),

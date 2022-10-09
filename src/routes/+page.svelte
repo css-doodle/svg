@@ -4,7 +4,6 @@
       <h1>
         <a href="https://yuanchuan.dev/experimenting-a-new-syntax-to-write-svg" target="_blank">
           New Syntax To Write SVG
-          <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svelte-1vv9v21"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
       </h1>
       <select on:change={handleSelect}>
@@ -172,7 +171,6 @@
     justify-content: center;
   }
   .preview-header button {
-    font-size: 16px;
     padding: 5px 4px;
     background: transparent;
     border: 1px solid var(--dark);
