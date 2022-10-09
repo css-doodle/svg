@@ -256,14 +256,9 @@ export default {
           fill: #76b39d;
         }
 
-        /* fix for Safari */
-
-        mask: defs mask {
-          circle { r: 5; fill: #fff }
-        }
-        circle {
-          r: 5; fill: none; stroke-width: .08
-        }
+        /* masking and border */
+        mask: defs mask { circle { r: 5; fill: #fff }}
+        circle { r: 4.98; fill: none}
       }
     }
   `),

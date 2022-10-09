@@ -172,10 +172,11 @@
     justify-content: center;
   }
   .preview-header button {
+    font-size: 16px;
     padding: 5px 4px;
     background: transparent;
     border: 1px solid var(--dark);
-    width: 5em;
+    min-width: 5em;
   }
   .preview-header button.active {
     background: var(--dark);
