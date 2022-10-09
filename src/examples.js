@@ -23,23 +23,28 @@ export default {
   basic: indent(`
     svg {
       viewBox: 0 0 10 10;
-      stroke: black;
+      stroke: #000;
       stroke-width: .1;
+      circle {
+        fill: deepskyblue;
+        cx: 4;
+        cy: 4;
+        r: 3
+      }
       rect {
         x: 8;
         y: 8;
         width: 1;
         height: 1;
         fill: yellow;
-        style transform-box: fill-box;
-        transform-origin: center;
+        transform-origin: 8.5 8.5;
         transform: rotate(45);
       }
-      circle {
-        fill: deepskyblue;
-        cx: 4;
-        cy: 4;
-        r: 3
+      rect {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke-width: .2;
       }
     }
   `),
