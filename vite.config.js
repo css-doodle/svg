@@ -8,7 +8,7 @@ const config = {
   build: {
     rollupOptions: {
       external: [
-        'css-doodle'
+        'css-doodle/generator'
       ]
     }
   }
