@@ -2,8 +2,9 @@
 name: Deploy GitHub Pages
 
 on:
-  - push
-  - pull_request
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -14,23 +15,20 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         os: [ubuntu-latest]
         node-version: [18.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
