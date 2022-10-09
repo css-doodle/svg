@@ -247,6 +247,37 @@ export default {
         fill: #76b39d;
       }
     }
+  `),
+
+  'patterns': indent(`
+    svg {
+      viewBox: 0 0 1 1;
+      rect*2 {
+        x, y: @pn(0, .05);
+        width, height: 100%;
+        fill: defs pattern {
+          width, height: 10%;
+          viewBox: -5 -5 10 10;
+          g {
+            circle*4 {
+              r: 5;
+              cx, cy: @Plot(r: 7.07; rotate: 45);
+              fill: #11A8E3;
+            }
+            circle {
+              r: 1.2;
+              fill: @pn(#D01C3B, #E0D31C)
+            }
+            mask: defs mask {
+              circle {
+                r: 5;
+                fill: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
   `)
 }
 
