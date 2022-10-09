@@ -253,14 +253,14 @@ export default {
     svg {
       viewBox: 0 0 1 1;
       rect*2 {
-        x, y: @pn(0, .05);
+        x, y: @pn(0, .049);
         width, height: 100%;
         fill: defs pattern {
           width, height: 10%;
           viewBox: -5 -5 10 10;
           g {
             circle*4 {
-              r: 5;
+              r: 4.9;
               cx, cy: @Plot(r: 7.07; rotate: 45);
               fill: #11A8E3;
             }
@@ -270,7 +270,7 @@ export default {
             }
             mask: defs mask {
               circle {
-                r: 5;
+                r: 4.9;
                 fill: #fff;
               }
             }
