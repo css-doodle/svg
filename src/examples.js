@@ -129,6 +129,7 @@ export default {
     svg {
       viewBox: 0 0 50 1200;
       overflow: visible;
+      style max-height: inherit;
       foreignObject {
         width, height: 100%;
         font-size: 2;
@@ -201,6 +202,14 @@ export default {
             scale: 20;
           }
         }
+
+        /* fix for Safari */
+        mask: defs mask {
+          rect {
+            width, height: 100%;
+            fill: #fff;
+          }
+        }
       }
     }
   `),
@@ -208,43 +217,48 @@ export default {
   'hyperbolic circles': indent(`
     svg {
       viewBox: -5 -5 10 10;
+      g {
+        stroke: #1B2D37;
+        stroke-width: .04;
 
-      /* for simplicity */
-      style border-radius: 50%;
-      style border: .8vmin solid #1B2D37;
-      style background: #f9f8eb;
+        circle {
+          r: 5;
+          fill: #f9f8eb;
+        }
+        circle*4 {
+          r: 5;
+          cx, cy: @Plot(r: 7.07; rotate: 45);
+          fill: #76b39d;
+        }
+        circle*8 {
+          cx, cy: @Plot(r: 5.5; rotate: @calc(45/2));
+          r: @calc(5/2.39);
+          fill: #05004e;
+        }
+        circle*16 {
+          r: 1.01;
+          cx, cy: @Plot(r: 5.2; rotate: @calc(45/4));
+          fill: #fd5f00;
+        }
+        circle*32 {
+          r: @calc(5/9.6);
+          cx, cy: @Plot(r: 5.2; rotate: @calc(45/8));
+          fill: #f9f8eb;
+        }
+        circle*64 {
+          r: @calc(5/21);
+          cx, cy: @Plot(r: 5.08; rotate: @calc(45/16));
+          fill: #76b39d;
+        }
 
-      stroke: #1B2D37;
-      stroke-width: .04;
+        /* fix for Safari */
 
-      circle*4 {
-        cx, cy: @Plot(r: 7.07; rotate: 45);
-        r: 5;
-        fill: #76b39d;
-      }
-
-      circle*8 {
-        cx, cy: @Plot(r: 6.23; rotate: @calc(45/2));
-        r: @calc(5/2);
-        fill: #05004e;
-      }
-
-      circle*16 {
-        cx, cy: @Plot(r: 5.69; rotate: @calc(45/4));
-        r: @calc(5/4);
-        fill: #fd5f00;
-      }
-
-      circle*32 {
-        cx, cy: @Plot(r: 5.37; rotate: @calc(45/8));
-        r: @calc(5/8);
-        fill: #f9f8eb;
-      }
-
-      circle*64 {
-        cx, cy: @Plot(r: 5.19; rotate: @calc(45/16));
-        r: @calc(5/16);
-        fill: #76b39d;
+        mask: defs mask {
+          circle { r: 5; fill: #fff }
+        }
+        circle {
+          r: 5; fill: none; stroke-width: .08
+        }
       }
     }
   `),
