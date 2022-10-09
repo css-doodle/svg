@@ -114,6 +114,7 @@
   }
 
   select {
+    font-size: 16px;
     margin-left: auto;
     background: transparent;
     border: 1px solid var(--light);
