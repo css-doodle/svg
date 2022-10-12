@@ -6,11 +6,13 @@
           New Syntax To Write SVG
         </a>
       </h1>
-      <select on:change={handleSelect}>
-        {#each allExamples as item}
-          <option value={item.value}>{item.name}</option>
-        {/each}
-      </select>
+      {#if selectedName}
+        <select on:change={handleSelect} value={selectedName}>
+          {#each exampleNames as name}
+            <option value={name}>{name}</option>
+          {/each}
+        </select>
+      {/if}
     </header>
     <div class="editor-container">
       <Editor {code} bind:this={editor} on:change={handleChange} />
@@ -33,34 +35,58 @@
 </main>
 
 <script>
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
   import { svg } from 'css-doodle/generator';
   import Editor from '../components/editor/index.svelte';
 
   import examples from '../examples.js';
 
-  let allExamples = getExamples(examples);
-  let code = allExamples[0].value;
+  let exampleNames = Object.keys(examples);
+  let selectedName = '';
+  let code = '';
 
-  $: svgCode = svg(code);
   let editor;
   let tab = 'graph';
 
-  function getExamples(examples) {
-    let result = [];
-    for (let [name, value] of Object.entries(examples)) {
-      result.push({ name, value });
-    }
-    return result;
-  }
+  $: svgCode = svg(code);
 
   function handleChange(e) {
     code = e.detail;
   }
 
   function handleSelect(e) {
-    code = e.target.value;
+    let name = (typeof e === 'string') ? e : e.target.value;
+    code = examples[name];
+    if (!code) {
+      name = exampleNames[0];
+      code = examples[name];
+    }
+    selectedName = name;
     editor.updateCode(code);
+    updateUrl(name);
   }
+
+  function updateUrl(name) {
+    let query = new URLSearchParams(location.search);
+    query.set('name', name);
+    goto(location.pathname + '?' + query.toString(), {
+      replaceState: true
+    });
+  }
+
+  onMount(() => {
+    let query = new URLSearchParams(location.search);
+    let name = query.get('name');
+    if (!name) {
+      name = exampleNames[0];
+      code = examples[name];
+      selectedName = name;
+      editor.updateCode(code);
+    } else {
+      handleSelect(name);
+    }
+  });
 </script>
 
 <style>
