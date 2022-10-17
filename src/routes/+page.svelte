@@ -24,7 +24,7 @@
       <button class:active={tab === 'graph'} on:click={() => tab = 'graph'}>Preview</button>
       <button class:active={tab === 'svg'} on:click={() => tab = 'svg'}>SVG</button>
     </header>
-    <div class="preview-graph" class:svg={tab === 'svg'}>
+    <div class="preview-graph" class:svg={tab === 'svg'} class:full>
       {#if tab === 'graph'}
         {@html svgCode}
       {:else}
@@ -50,6 +50,8 @@
   let tab = 'graph';
 
   $: svgCode = svg(code);
+
+  $: full = selectedName === 'weave';
 
   function handleChange(e) {
     code = e.detail;
@@ -162,9 +164,17 @@
     overflow: auto;
   }
 
+  .preview-graph.full {
+    padding: 0;
+  }
+
   .preview-graph :global(svg) {
     max-width: 100%;
     max-height: 100%;
+  }
+  .preview-graph.full :global(svg) {
+    width: 100%;
+    height: 100%;
   }
 
   .svg {

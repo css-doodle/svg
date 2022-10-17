@@ -1,5 +1,5 @@
 export default {
-  grid: indent(`
+  grid: read(`
     svg {
       viewBox: .5 .5 10 10;
       stroke: #1B2D37;
@@ -20,7 +20,7 @@ export default {
     }
   `),
 
-  basic: indent(`
+  basic: read(`
     svg {
       viewBox: 0 0 10 10;
       stroke: #000;
@@ -40,7 +40,7 @@ export default {
     }
   `),
 
-  snowflake: indent(`
+  snowflake: read(`
     svg {
       viewBox: -50 -50 100 100;
       stroke-linecap: round;
@@ -55,7 +55,7 @@ export default {
     }
   `),
 
-  wavy: indent(`
+  wavy: read(`
     svg {
       viewBox: -58 -57 114 114;
       stroke-width: .15;
@@ -70,7 +70,7 @@ export default {
     }
   `),
 
-  flower: indent(`
+  flower: read(`
     svg {
       viewBox: 0 0 10 10.1;
       stroke: #000;
@@ -103,7 +103,7 @@ export default {
     }
   `),
 
-  star: indent(`
+  star: read(`
     svg {
       viewBox: -50 -50 100 100;
       polygon {
@@ -121,7 +121,7 @@ export default {
     }
   `),
 
-  '99 bottles of beer': indent(`
+  '99 bottles of beer': read(`
     svg {
       viewBox: 0 0 50 1200;
       overflow: visible;
@@ -141,7 +141,7 @@ export default {
     }
   `),
 
-  'window pattern': indent(`
+  'window pattern': read(`
     svg {
       viewBox: -3 -3 206 206;
       fill: none;
@@ -164,7 +164,7 @@ export default {
     }
   `),
 
-  lines: indent(`
+  lines: read(`
     svg {
       viewBox: 0 0 100 100;
 
@@ -210,7 +210,7 @@ export default {
     }
   `),
 
-  'hyperbolic circles': indent(`
+  'hyperbolic circles': read(`
     svg {
       viewBox: -5 -5 10 10;
       g {
@@ -254,7 +254,7 @@ export default {
     }
   `),
 
-  'patterns': indent(`
+  'patterns': read(`
     svg {
       viewBox: 0 0 1 1;
       rect*2 {
@@ -285,7 +285,7 @@ export default {
     }
   `),
 
-  '10 PRINT': indent(`
+  '10 PRINT': read(`
     svg {
       viewBox: -.5 -.5 17 17;
       stroke: #1B2D37;
@@ -299,10 +299,36 @@ export default {
         );
       }
     }
+  `),
+
+  'weave': read(`
+    svg {
+      viewBox: 0 0 1 1;
+      preserveAspectRatio: xMidYMid slice;
+      style background: #fff;
+      rect {
+        width, height: 100%;
+        fill: defs pattern {
+          viewBox: 0 0 14 14;
+          patternTransform: rotate(45);
+          width, height: 12%;
+          path {
+            fill: none;
+            stroke-linecap: square;
+            stroke: #7db46c;
+            stroke-width: 1;
+            d: M 4 5
+               @p(@p(h -1 v -2 h 3 v 4 h -5 v -6 h 6)
+                  @flipv.@reverse.@p)
+               M 4 9 @flipv.@p
+          }
+        }
+      }
+    }
   `)
 }
 
-function indent(input) {
+function read(input) {
   let temp = input.replace(/^\n+/g, '');
   let len = temp.length - temp.replace(/^\s+/g, '').length;
   let result = input.split('\n').map(n => (
