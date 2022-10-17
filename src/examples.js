@@ -289,7 +289,7 @@ export default {
     svg {
       viewBox: -.5 -.5 17 17;
       stroke: #1B2D37;
-      stroke-width: .08;
+      stroke-width: .1;
       stroke-linecap: square;
 
       line*16x16 {
