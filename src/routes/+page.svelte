@@ -197,10 +197,12 @@
     justify-content: center;
   }
   .preview-header button {
+    margin: 0;
     padding: 5px 4px;
     background: transparent;
     border: 1px solid var(--dark);
     min-width: 5em;
+    font-size: 1em;
   }
   .preview-header button.active {
     background: var(--dark);

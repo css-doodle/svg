@@ -283,6 +283,22 @@ export default {
         }
       }
     }
+  `),
+
+  '10 PRINT': indent(`
+    svg {
+      viewBox: -.5 -.5 17 17;
+      stroke: #1B2D37;
+      stroke-width: .08;
+      stroke-linecap: square;
+
+      line*16x16 {
+        x1, y1, x2, y2: @p(
+          @nx(-1) @ny(-1) @nx @ny,
+          @nx @ny(-1) @nx(-1) @ny
+        );
+      }
+    }
   `)
 }
 
