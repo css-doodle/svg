@@ -167,6 +167,9 @@
   .preview-graph.full {
     padding: 0;
   }
+  .preview-graph.full pre {
+    padding: 1.6rem;
+  }
 
   .preview-graph :global(svg) {
     max-width: 100%;
