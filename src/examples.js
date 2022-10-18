@@ -37,6 +37,11 @@ export default {
         fill: yellow;
         transform: translate(8.5 7.8) rotate(45);
       }
+      rect {
+        width: 10;
+        height: 10;
+        fill: none;
+      }
     }
   `),
 
