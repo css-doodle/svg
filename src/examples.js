@@ -329,7 +329,28 @@ export default {
         }
       }
     }
-  `)
+  `),
+
+  'polyline': read(`
+    svg {
+      viewBox: -50 -50 100 100;
+      stroke: #1B2D37;
+      fill: none;
+
+      polyline {
+        points: @m61.@Plot(
+          turn: 20.1;
+          r: t;;
+        );
+      }
+
+      rect {
+        stroke-width: 2;
+        width, height: 98;
+        x, y: -49;
+      }
+    }
+  `),
 }
 
 function read(input) {
