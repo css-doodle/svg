@@ -294,13 +294,14 @@ export default {
     svg {
       viewBox: -.5 -.5 17 17;
       stroke: #1B2D37;
-      stroke-width: .1;
-      stroke-linecap: square;
+      stroke-width: .4;
+      stroke-linecap: round;
 
       line*16x16 {
         x1, y1, x2, y2: @p(
           @nx(-1) @ny(-1) @nx @ny,
-          @nx @ny(-1) @nx(-1) @ny
+          @nx @ny(-1) @nx(-1) @ny,
+          @nx @ny(-1) @nx @ny
         );
       }
     }
