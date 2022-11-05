@@ -294,8 +294,8 @@
 
   .actions {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 1em;
+    right: 1em;
   }
   .actions button {
     background: rgba(0, 0, 0, .2);
