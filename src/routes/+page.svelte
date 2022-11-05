@@ -7,8 +7,11 @@
         </a>
       </h1>
       <div class="nav">
-        {#if selectedName}
+        {#if selectedName || codeFromQuery}
           <select on:change={handleSelect} value={selectedName}>
+            {#if codeFromQuery}
+              <option value="other">Select example</option>
+            {/if}
             {#each exampleNames as name}
               <option value={name}>{name}</option>
             {/each}
@@ -21,6 +24,11 @@
     </header>
     <div class="editor-container">
       <Editor {code} bind:this={editor} on:change={handleChange} />
+    </div>
+    <div class="actions">
+      {#if !codeFromQuery && mounted}
+        <button on:click={saveToURL}>Save to URL</button>
+      {/if}
     </div>
   </div>
 
@@ -50,9 +58,12 @@
   let exampleNames = Object.keys(examples);
   let selectedName = '';
   let code = '';
+  let codeFromQuery = '';
 
   let editor;
   let tab = 'graph';
+
+  let mounted = false;
 
   $: svgCode = svg(code);
 
@@ -60,6 +71,9 @@
 
   function handleChange(e) {
     code = e.detail;
+    if (codeFromQuery) {
+      saveToURL();
+    }
   }
 
   function handleSelect(e) {
@@ -72,11 +86,24 @@
     selectedName = name;
     editor.updateCode(code);
     updateUrl(name);
+    codeFromQuery = '';
   }
 
   function updateUrl(name) {
     let query = new URLSearchParams(location.search);
     query.set('name', name);
+    query.delete('code');
+    goto(location.pathname + '?' + query.toString(), {
+      replaceState: true
+    });
+  }
+
+  function saveToURL() {
+    let query = new URLSearchParams(location.search);
+    query.set('code', code);
+    query.delete('name');
+    codeFromQuery = code;
+    selectedName = 'other';
     goto(location.pathname + '?' + query.toString(), {
       replaceState: true
     });
@@ -85,7 +112,12 @@
   onMount(() => {
     let query = new URLSearchParams(location.search);
     let name = query.get('name');
-    if (!name) {
+    codeFromQuery = query.get('code');
+    if (codeFromQuery) {
+      code = codeFromQuery;
+      editor.updateCode(code);
+      selectedName = 'other';
+    } else if (!name) {
       name = exampleNames[0];
       code = examples[name];
       selectedName = name;
@@ -93,6 +125,7 @@
     } else {
       handleSelect(name);
     }
+    mounted = true;
   });
 </script>
 
@@ -138,6 +171,7 @@
   .editor {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .editor-container {
@@ -256,6 +290,21 @@
   .preview-header button:last-child {
     border-radius: 0 3px 3px 0;
     margin-left: -1px;
+  }
+
+  .actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  .actions button {
+    background: rgba(0, 0, 0, .2);
+    border: 1px solid var(--dark);
+    padding: 5px 8px;
+    font-size: inherit;
+    color: var(--light);
+    cursor: pointer;
+    border-radius: 3px;
   }
   @media screen and (max-width: 51.25em) {
     .preview-graph pre {
