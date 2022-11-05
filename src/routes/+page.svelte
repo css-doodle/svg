@@ -67,7 +67,7 @@
 
   $: svgCode = svg(code);
 
-  $: full = selectedName === 'weave';
+  $: full = /preserveAspectRatio/i.test(code);
 
   function handleChange(e) {
     code = e.detail;
