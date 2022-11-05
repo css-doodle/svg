@@ -7,9 +7,9 @@
         </a>
       </h1>
       <div class="nav">
-        {#if selectedName || codeFromQuery}
+        {#if selectedName || codeFromQuery !== undefined}
           <select on:change={handleSelect} value={selectedName}>
-            {#if codeFromQuery}
+            {#if codeFromQuery !== undefined}
               <option value="other">Select example</option>
             {/if}
             {#each exampleNames as name}
@@ -26,7 +26,7 @@
       <Editor {code} bind:this={editor} on:change={handleChange} />
     </div>
     <div class="actions">
-      {#if !codeFromQuery && mounted}
+      {#if codeFromQuery === undefined && mounted}
         <button on:click={saveToURL}>Save to URL</button>
       {/if}
     </div>
@@ -58,7 +58,7 @@
   let exampleNames = Object.keys(examples);
   let selectedName = '';
   let code = '';
-  let codeFromQuery = '';
+  let codeFromQuery = undefined;
 
   let editor;
   let tab = 'graph';
@@ -71,7 +71,7 @@
 
   function handleChange(e) {
     code = e.detail;
-    if (codeFromQuery) {
+    if (codeFromQuery !== undefined) {
       saveToURL();
     }
   }
@@ -86,7 +86,7 @@
     selectedName = name;
     editor.updateCode(code);
     updateUrl(name);
-    codeFromQuery = '';
+    codeFromQuery = undefined;
   }
 
   function updateUrl(name) {
@@ -104,9 +104,7 @@
     query.delete('name');
     codeFromQuery = code;
     selectedName = 'other';
-    goto(location.pathname + '?' + query.toString(), {
-      replaceState: true
-    });
+    history.pushState('', '', location.pathname + '?' + query.toString());
   }
 
   onMount(() => {
