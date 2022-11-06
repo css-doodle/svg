@@ -104,7 +104,7 @@
     query.delete('name');
     codeFromQuery = code;
     selectedName = 'other';
-    history.pushState('', '', location.pathname + '?' + query.toString());
+    history.replaceState('', '', location.pathname + '?' + query.toString());
   }
 
   onMount(() => {
