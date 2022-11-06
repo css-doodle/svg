@@ -7,9 +7,9 @@
         </a>
       </h1>
       <div class="nav">
-        {#if selectedName || codeFromQuery !== undefined}
+        {#if selectedName || !isNull(codeFromQuery)}
           <select on:change={handleSelect} value={selectedName}>
-            {#if codeFromQuery !== undefined}
+            {#if !isNull(codeFromQuery)}
               <option value="other">Select example</option>
             {/if}
             {#each exampleNames as name}
@@ -26,7 +26,7 @@
       <Editor {code} bind:this={editor} on:change={handleChange} />
     </div>
     <div class="actions">
-      {#if codeFromQuery === undefined && mounted}
+      {#if isNull(codeFromQuery) && mounted}
         <button on:click={saveToURL}>Save to URL</button>
       {/if}
     </div>
@@ -71,9 +71,13 @@
 
   function handleChange(e) {
     code = e.detail;
-    if (codeFromQuery !== undefined) {
+    if (!isNull(codeFromQuery)) {
       saveToURL();
     }
+  }
+
+  function isNull(value) {
+    return value === null || value === undefined;
   }
 
   function handleSelect(e) {
