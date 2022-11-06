@@ -1,24 +1,24 @@
 {
-	"name": "svg",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-static": "^1.0.0-next.44",
-		"@sveltejs/kit": "1.0.0-next.509",
-		"svelte": "^3.44.0",
-		"vite": "^3.1.0"
-	},
-	"type": "module",
-	"dependencies": {
-		"@codemirror/lang-css": "^6.0.0",
-		"codemirror": "^6.0.1",
-		"css-doodle": "^0.30.4"
-	},
+  "name": "svg",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.44",
+    "@sveltejs/kit": "1.0.0-next.509",
+    "svelte": "^3.44.0",
+    "vite": "^3.1.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@codemirror/lang-css": "^6.0.0",
+    "codemirror": "^6.0.1",
+    "css-doodle": "^0.30.4"
+  },
   "engines": {
     "node": ">= 18.0.0"
   }
