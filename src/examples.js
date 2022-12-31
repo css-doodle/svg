@@ -52,9 +52,9 @@ export default {
       stroke: #000;
 
       path*6 {
-        transform: rotate(@calc(@n*60));
+        transform: rotate(@n(*60));
         d: M 0 0 0 44
-           @M2x3(M 0 @calc(-9*@ny)
+           @M2x3(M 0 @ny(* -9)
                  L @pn(±9) @calc(-10*@ny - 5.8));
       }
     }
@@ -157,9 +157,9 @@ export default {
       path {
         d: M 100 5
            @p(@p(@p(h-43 v5 h-10 v-5 h-10 v16 h-32 v10 h10 v-26 h-10)
-              @flip.@invert.@reverse.@p)
-             @flipv.@invert.@p)
-           @flip.@p;
+              @flip.invert.reverse.p)
+             @flipv.invert.p)
+           @flip.p;
       }
 
       /* frame */
@@ -324,8 +324,8 @@ export default {
             stroke-width: 1;
             d: M 4 5
                @p(@p(h -1 v -2 h 3 v 4 h -5 v -6 h 6)
-                  @flipv.@reverse.@p)
-               M 4 9 @flipv.@p
+                  @flipv.reverse.p)
+               M 4 9 @flipv.p
           }
         }
       }
@@ -382,6 +382,23 @@ export default {
           }
         }
       }
+    }
+  `),
+
+  'codepen logo': read(`
+    svg {
+      viewBox: -5 -5 10 10;
+
+      fill: none;
+      stroke: #000;
+      stroke-width: .6;
+      stroke-linejoin: round;
+
+      --a: @m4.Plot(r: 2; scale: @sqrt2 1);
+      --b: @m4.Plot(r: 2; scale: @sqrt2 1; move: 0 2);
+
+      path   { d: M @p((--a)) z M @p((--b)) z}
+      path*4 { d: M @pn(--a) @pn(--b) }
     }
   `),
 }
