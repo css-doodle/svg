@@ -397,8 +397,9 @@ export default {
       --a: @m4.Plot(r: 2; scale: @sqrt2 1);
       --b: @m4.Plot(r: 2; scale: @sqrt2 1; move: 0 2);
 
-      path   { d: M @p((--a)) z M @p((--b)) z}
-      path*4 { d: M @pn(--a) @pn(--b) }
+      path {
+        d: M @p((--a)) z M @p((--b)) z @M4(M @pn(--a) @pn(--b))
+      }
     }
   `),
 }
