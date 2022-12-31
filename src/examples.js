@@ -387,7 +387,7 @@ export default {
 
   'codepen logo': read(`
     svg {
-      viewBox: -5 -5 10 10;
+      viewBox: -5 -5 10 11.5;
 
       fill: none;
       stroke: #000;
