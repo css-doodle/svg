@@ -148,23 +148,20 @@ export default {
 
   'window pattern': read(`
     svg {
-      viewBox: -3 -3 206 206;
+      viewBox: 0 0 200 200 padding 20;
       fill: none;
       stroke: #1B2D37;
       stroke-width: 3;
       stroke-linecap: square;
 
       path {
-        d: M 100 5
+        d:
+          M 0 0 h 200 v 200 h -200 z
+          M 100 5
            @p(@p(@p(h-43 v5 h-10 v-5 h-10 v16 h-32 v10 h10 v-26 h-10)
               @flip.invert.reverse.p)
              @flipv.invert.p)
            @flip.p;
-      }
-
-      /* frame */
-      rect {
-        width, height: 200;
       }
     }
   `),
@@ -292,7 +289,7 @@ export default {
 
   '10 PRINT': read(`
     svg {
-      viewBox: -.5 -.5 17 17;
+      viewBox: 0 0 16 16 padding .2;
       stroke: #1B2D37;
       stroke-width: .4;
       stroke-linecap: round;
