@@ -401,6 +401,18 @@ export default {
       }
     }
   `),
+
+  'fibonacci spiral': read(`
+    svg {
+      viewBox: -50 -50 100 100;
+      circle*300 {
+        fill: hsl(@calc(120-90*@sin.n), 80%, 50%);
+        r: @sqrt(@n/60);
+        cx: @calc(@n*.618^4 * cos(2π*@n*.618));
+        cy: @calc(@n*.618^4 * sin(2π*@n*.618));
+      }
+    }
+  `),
 }
 
 function read(input) {
