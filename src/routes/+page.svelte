@@ -1,4 +1,14 @@
 <main>
+  {#if selectedName || !isNull(codeFromQuery)}
+    <div class="example-list">
+      <ul>
+        {#each exampleNames as name}
+          <li><a href="?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
+        {/each}
+      </ul>
+    </div>
+  {/if}
+
   <div class="editor">
     <header class="editor-header">
       <h1>
@@ -93,6 +103,19 @@
     codeFromQuery = undefined;
   }
 
+  function handleSelectListItem(name) {
+    return e => {
+      code = examples[name];
+      if (!code) {
+        name = exampleNames[0];
+        code = examples[name];
+      }
+      selectedName = name;
+      editor.updateCode(code);
+      codeFromQuery = undefined;
+    }
+  }
+
   function updateUrl(name) {
     let query = new URLSearchParams(location.search);
     query.set('name', name);
@@ -133,25 +156,64 @@
 
 <style>
   main {
+    --darken: #101e26;
     --dark: #1b2e37;
+    --dark-hover: #17262f;
     --light: #d5f1ff;
+    --dark-border: #2c4049;
+    --light-border: #bdd8e4;
   }
 
   main {
     display: grid;
     height: 100%;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 200px 1fr 1fr;
+  }
+
+  .example-list {
+    background: var(--darken);
+    color: var(--light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em 0;
+  }
+
+  .example-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .example-list a {
+    display: block;
+    padding: .5rem 1rem;
+    opacity: .5;
+    transition: .2s;
+  }
+  .example-list a.active {
+    background: var(--dark);
+    color: var(--light);
+    opacity: 1;
+    position: relative;
+  }
+  .example-list a.active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--light);
+  }
+  .example-list a:not(.active):hover {
+    opacity: .85;
+    background: var(--dark-hover);
   }
 
   .editor, .preview {
     height: 100%;
     overflow: auto;
-  }
-
-  @media screen and (max-width: 51.25em) {
-    main {
-      grid-template: 1fr 1fr / auto;
-    }
   }
 
   h1 {
@@ -189,6 +251,7 @@
     color: var(--light);
     padding: 4px;
     border-radius: 3px;
+    display: none;
   }
   @media screen and (max-width: 27em) {
     select {
@@ -258,7 +321,7 @@
   }
 
   .editor-header {
-    border-bottom: 1px solid var(--light);
+    border-bottom: 1px solid var(--dark-border);
     background: var(--dark);
     color: var(--light);
   }
@@ -268,7 +331,7 @@
   }
 
   .preview-header {
-    border-bottom: 1px solid var(--dark);
+    border-bottom: 1px solid var(--light-border);
     justify-content: center;
   }
 
@@ -308,7 +371,24 @@
     cursor: pointer;
     border-radius: 3px;
   }
+
+  @media screen and (max-width: 67.5em) {
+    main {
+      grid-template: auto / 1fr 1fr;
+    }
+    .example-list {
+      display: none;
+      position: absolute;
+    }
+    .editor select {
+      display: block;
+    }
+  }
+
   @media screen and (max-width: 51.25em) {
+    main {
+      grid-template: 1fr 1fr / auto;
+    }
     .preview-graph pre {
       padding-right: 1.6em;
     }
