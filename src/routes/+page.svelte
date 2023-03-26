@@ -2,7 +2,7 @@
   <div class="example-list">
     <ul>
       {#each exampleNames as name}
-        <li><a href="?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
+        <li><a href="{base}?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
       {/each}
     </ul>
   </div>
@@ -60,6 +60,7 @@
   import { onMount } from 'svelte';
   import { svg } from 'css-doodle/generator';
   import Editor from '../components/editor/index.svelte';
+  import { base } from '$app/paths';
 
   import examples from '../examples.js';
 
