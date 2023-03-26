@@ -1,13 +1,11 @@
 <main>
-  {#if selectedName || !isNull(codeFromQuery)}
-    <div class="example-list">
-      <ul>
-        {#each exampleNames as name}
-          <li><a href="?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
-        {/each}
-      </ul>
-    </div>
-  {/if}
+  <div class="example-list">
+    <ul>
+      {#each exampleNames as name}
+        <li><a href="?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
+      {/each}
+    </ul>
+  </div>
 
   <div class="editor">
     <header class="editor-header">
