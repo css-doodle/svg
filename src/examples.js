@@ -415,7 +415,7 @@ export default {
   `),
 
   'planet': read(`
-    --color-a: #F8911B;
+    --color-a: pink;
     --color-b: #322EA2;
 
     svg {
