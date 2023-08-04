@@ -413,6 +413,100 @@ export default {
       }
     }
   `),
+
+  'planet': read(`
+    --color-a: #F8911B;
+    --color-b: #322EA2;
+
+    svg {
+      viewBox: -5 -5 10 10;
+      g {
+        mask: defs mask {
+          circle {
+            r: 3;
+            fill: #fff;
+          }
+        }
+        circle {
+          r: 3;
+          fill: @p(--color-a);
+        }
+        g {
+          filter: defs filter {
+            feTurbulence {
+              type: fractalNoise;
+              baseFrequency: 100;
+            }
+            feDisplacementMap {
+              in: SourceGraphic;
+              scale: 3;
+            }
+          }
+          circle {
+            cx, cy: 4;
+            r: 6;
+            fill: @p(--color-b);
+            filter: defs filter {
+              feGaussianBlur {
+                stdDeviation: .7;
+              }
+            }
+          }
+        }
+      }
+
+      g {
+        transform: rotate(-20);
+        circle*50 {
+          r: @r(.1);
+          fill: @p(--color-a, --color-b);
+          cx, cy: @Plot(
+            turn: .774;
+            scale: 3 1.3;
+            rotate: 227;
+            move: 0 .6;
+            r: 1.5;
+          )
+        }
+      }
+
+      g {
+        mask: defs mask {
+          circle {
+            r: .85;
+            cx, cy:2;
+            fill: #fff;
+          }
+        }
+        circle {
+          r: 8;
+          fill: @p(--color-b);
+        }
+        g {
+          filter: defs filter {
+            feTurbulence {
+              type: fractalNoise;
+              baseFrequency: 100;
+            }
+            feDisplacementMap {
+              in: SourceGraphic;
+              scale: 1;
+            }
+          }
+          circle {
+            cx, cy: 1;
+            r: 1.5;
+            fill: @p(--color-a);
+            filter: defs filter {
+              feGaussianBlur {
+                stdDeviation: .2;
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 }
 
 function read(input) {

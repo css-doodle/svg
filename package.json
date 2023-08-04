@@ -9,15 +9,15 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "2.0.1",
-    "@sveltejs/kit": "1.14.0",
+    "@sveltejs/kit": "^1.22.4",
     "svelte": "3.57.0",
-    "vite": "4.2.0"
+    "vite": "^4.4.8"
   },
   "type": "module",
   "dependencies": {
     "@codemirror/lang-css": "^6.0.0",
     "codemirror": "^6.0.1",
-    "css-doodle": "0.34.8"
+    "css-doodle": "0.34.10"
   },
   "engines": {
     "node": ">= 18.0.0"
