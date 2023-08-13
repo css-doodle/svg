@@ -516,17 +516,18 @@ export default {
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: .4;
-        stroke-dasharray: 200;
+        stroke-dasharray: 1;
+        pathLength: 1;
         fill: none;
         d: M 0 0
              @M10.pn(0 @n @n 0, @n 0 0 @n)
              @M10.pn(@n @N @N @n, @N @n @n @N);
+
         animate {
           attributeName: stroke-dashoffset;
-          from: 200;
-          to: 0;
-          dur: 5s;
+          from, to, dur: 1, 0, 3s;
         }
+
       }
     }
   `),
