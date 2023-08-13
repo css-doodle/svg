@@ -176,6 +176,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 2em 0;
+    overflow: auto;
   }
 
   .example-list ul {

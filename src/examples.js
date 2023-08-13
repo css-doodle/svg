@@ -506,7 +506,67 @@ export default {
         }
       }
     }
-  `)
+  `),
+
+  'zigzag': read(`
+    svg {
+      viewBox: 0 0 10 10 p 2;
+      path {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: .4;
+        stroke-dasharray: 200;
+        fill: none;
+        d: M 0 0
+             @M10.pn(0 @n @n 0, @n 0 0 @n)
+             @M10.pn(@n @N @N @n, @N @n @n @N);
+        animate {
+          attributeName: stroke-dashoffset;
+          from: 200;
+          to: 0;
+          dur: 5s;
+        }
+      }
+    }
+  `),
+
+  'arc shape': read(`
+    svg {
+      viewBox: -50 -50 100 100 p 40;
+      fill: none;
+
+      --color: blue;
+
+      --angle-a: π/180 * -80 - π/2;
+      --angle-b: π/180 * -45 - π/2;
+
+      --arc: @calc(50 * cos(@p(--angle-a))) @calc(50 * sin(@p(--angle-a)))
+             A 50 50 0 0 1
+             @calc(50 * cos(@p(--angle-b))) @calc(50 * sin(@p(--angle-b)));
+
+      circle {
+        r: 50;
+        stroke-width: .5;
+        stroke: @p(--color);
+      }
+
+      g {
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        path {
+          stroke: color-mix(in srgb, @p(--color) 40%, #fff);
+          fill: color-mix(in srgb, @p(--color) 40%, #fff);
+          d: M 0 0 @p(--arc) z
+        }
+        path {
+          stroke: @p(--color);
+          d: M @p(--arc);
+        }
+      }
+    }
+  `),
 }
 
 function read(input) {
