@@ -317,7 +317,7 @@ export default {
           path {
             fill: none;
             stroke-linecap: square;
-            stroke: #507384;
+            stroke: #1b2d37;
             stroke-width: 1;
             d: M 4 5
                @p(@p(h -1 v -2 h 3 v 4 h -5 v -6 h 6)
