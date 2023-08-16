@@ -172,14 +172,14 @@
   .example-list {
     background: var(--darken);
     color: var(--light);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     padding: 2em 0;
     overflow: auto;
   }
 
   .example-list ul {
+    width: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
