@@ -376,7 +376,8 @@
   .actions {
     position: absolute;
     bottom: 1em;
-    right: 1.6em;
+    right: 1em;
+    font-size: .85em;
   }
   .actions button {
     background: rgba(0, 0, 0, .2);
