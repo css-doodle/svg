@@ -2,7 +2,7 @@
   <div class="example-list">
     <ul>
       {#each exampleNames as name}
-        <li><a href="{base}?name={name}" class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
+        <li><a href="{base}?name={name}" use:scrollIntoView class:active={selectedName === name} on:click={handleSelectListItem(name)}>{name}</a></li>
       {/each}
     </ul>
   </div>
@@ -131,6 +131,14 @@
     codeFromQuery = code;
     selectedName = 'other';
     history.replaceState('', '', location.pathname + '?' + query.toString());
+  }
+
+  function scrollIntoView(element) {
+    setTimeout(() => {
+      if (element.classList.contains('active')) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   onMount(() => {
