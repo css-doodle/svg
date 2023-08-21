@@ -575,13 +575,11 @@ export default {
       stroke-linecap: square;
       stroke: blue;
       fill: none;
-      g*0-3 {
-        path {
-          d: @M0-3(
-            M @p.calc(12 - 6/4*@n) 12 @p 6
-            A @p.calc(6 - 6/4*@n) @p 0 1 0 6 @lp3
-          );
-        }
+      path*0-3 {
+        d: @M0-3(
+          M @p.calc(12 - 6/4*@n) 12 @p 6
+          A @p.calc(6 - 6/4*@n) @p 0 1 0 6 @lp3
+        );
         transform:
           translate(@pn(0 0, 24 0, 24 24, 0 24))
           rotate(@n(*90));
