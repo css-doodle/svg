@@ -572,27 +572,22 @@ export default {
   'loop': read(`
     svg {
       viewBox: 0 0 24 24 p 4;
-      stroke-width: .5;
       stroke-linecap: square;
       stroke: blue;
       fill: none;
-
       g*0-3 {
-        transform:
-          translate(@pn(0 0, 24 0, 24 24, 0 24))
-          rotate(@n(*90));
-        circle {
-          cx, cy, r: 6, 6, .2;
-        }
         path {
           d: @M0-3(
             M @p.calc(12 - 6/4*@n) 12 @p 6
             A @p.calc(6 - 6/4*@n) @p 0 1 0 6 @lp3
           );
         }
+        transform:
+          translate(@pn(0 0, 24 0, 24 24, 0 24))
+          rotate(@n(*90));
       }
     }
-  `)
+  `),
 }
 
 function read(input) {
