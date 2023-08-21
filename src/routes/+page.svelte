@@ -376,12 +376,12 @@
   .actions {
     position: absolute;
     bottom: 1em;
-    right: 1em;
+    right: 1.6em;
   }
   .actions button {
     background: rgba(0, 0, 0, .2);
     border: 1px solid var(--dark);
-    padding: 5px 8px;
+    padding: .75rem;
     font-size: inherit;
     color: var(--light);
     cursor: pointer;
