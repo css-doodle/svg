@@ -66,6 +66,7 @@
     letter-spacing: normal;
     line-height: 1.4;
     tab-size: 2;
+    display: grid;
   }
 
   @media screen and (max-width: 25.875em) {
