@@ -141,7 +141,7 @@
     });
   }
 
-  onMount(() => {
+  function init() {
     let query = new URLSearchParams(location.search);
     let name = query.get('name');
     codeFromQuery = query.get('code');
@@ -157,7 +157,15 @@
     } else {
       handleSelect(name);
     }
+  }
+
+  onMount(() => {
+    init();
+    window.addEventListener('popstate', init);
     mounted = true;
+    return () => {
+      window.removeEventListener(init);
+    }
   });
 </script>
 
