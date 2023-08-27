@@ -586,6 +586,37 @@ export default {
       }
     }
   `),
+
+  'openai logo': read(`
+    svg {
+      viewBox: -50 -50 100 100 p 20;
+
+      stroke-linecap: round;
+      stroke: blue;
+      fill: none;
+
+      --r: 14;
+      --r2: 22;
+      --x: @calc(@p(--r) * cos(π/6) * -1);
+      --y: @calc(@p(--r) * sin(π/6));
+
+      g*6 {
+        transform: rotate(@n(*60));
+        path {
+          stroke-width: 4.2;
+          d: M @calc(@p(--x) - 1) @p(--y)
+               @calc(@p(--x) - 1) @calc(@p(--y) * -3.4)
+        }
+        path {
+          stroke-width: 6;
+          d: M @p(--x) @calc(@p(--y) * -3.4)
+               @calc(@p(--x) * -1) @calc(@p(--y) * -5.4)
+             A @p(--r2) @p 0 0 1
+               @calc(@p(--x) * -3.1) @calc(@p(--y) * -1.4);
+        }
+      }
+    }
+  `)
 }
 
 function read(input) {
