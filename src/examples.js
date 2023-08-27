@@ -617,7 +617,7 @@ export default {
       path {
         stroke: #1B2D37;
         fill: none;
-        d: M 0 0 T 0 @m8x16.ny(*@pn(@m4(2), @m4(-2))) 34;
+        d: M 0 0 T 0 @m120.@n(*@pn(@m4(.2), @m4(-.2)));
         draw: 10s;
       }
     }
