@@ -516,18 +516,11 @@ export default {
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: .4;
-        stroke-dasharray: 1;
-        pathLength: 1;
         fill: none;
+        draw: 3s;
         d: M 0 0
              @M10.pn(0 @n @n 0, @n 0 0 @n)
              @M10.pn(@n @N @N @n, @N @n @n @N);
-
-        animate {
-          attributeName: stroke-dashoffset;
-          from, to, dur: 1, 0, 3s;
-        }
-
       }
     }
   `),
@@ -616,7 +609,19 @@ export default {
         }
       }
     }
-  `)
+  `),
+
+  'drawing ring': read(`
+    svg {
+      viewBox: -50 -50 100 100;
+      path {
+        stroke: #1B2D37;
+        fill: none;
+        d: M 0 0 T 0 @m8x16.ny(*@pn(@m4(2), @m4(-2))) 34;
+        draw: 10s;
+      }
+    }
+  `),
 }
 
 function read(input) {
