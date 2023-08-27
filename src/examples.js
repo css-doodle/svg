@@ -295,6 +295,7 @@ export default {
       stroke-linecap: round;
 
       line*16x16 {
+        draw: @r(1s);
         x1, y1, x2, y2: @p(
           @nx(-1) @ny(-1) @nx @ny,
           @nx @ny(-1) @nx(-1) @ny,
@@ -319,6 +320,7 @@ export default {
             stroke-linecap: square;
             stroke: #1b2d37;
             stroke-width: 1;
+            draw: 3s;
             d: M 4 5
                @p(@p(h -1 v -2 h 3 v 4 h -5 v -6 h 6)
                   @flipv.reverse.p)
@@ -336,6 +338,7 @@ export default {
       fill: none;
 
       polyline {
+        draw: 1s;
         points: @m61.@Plot(
           turn: 20.1;
           r: t;;
