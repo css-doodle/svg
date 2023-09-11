@@ -55,7 +55,7 @@ export default {
         transform: rotate(@n(*60));
         d: M 0 0 0 44
            @M2x3(M 0 @ny(* -9)
-                 L @pn(±9) @calc(-10*@ny - 5.8));
+                 L @pn(±9) $(-10*@ny - 5.8));
       }
     }
   `),
@@ -67,7 +67,7 @@ export default {
       stroke: #1B2D37;
       fill: #D5F1FF;
       circle*720 {
-        r: @calc(sin(π/@N*@n)*10);
+        r: $(sin(π/@N*@n)*10);
         cx, cy: @Plot(
           r: 40+sin(4t)*5+sin(12t)*5
         );
@@ -229,23 +229,23 @@ export default {
           fill: #76b39d;
         }
         circle*8 {
-          cx, cy: @Plot(r: 5.5; rotate: @calc(45/2));
-          r: @calc(5/2.39);
+          cx, cy: @Plot(r: 5.5; rotate: $(45/2));
+          r: $(5/2.39);
           fill: #05004e;
         }
         circle*16 {
           r: 1.01;
-          cx, cy: @Plot(r: 5.2; rotate: @calc(45/4));
+          cx, cy: @Plot(r: 5.2; rotate: $(45/4));
           fill: #fd5f00;
         }
         circle*32 {
-          r: @calc(5/9.6);
-          cx, cy: @Plot(r: 5.2; rotate: @calc(45/8));
+          r: $(5/9.6);
+          cx, cy: @Plot(r: 5.2; rotate: $(45/8));
           fill: #f9f8eb;
         }
         circle*64 {
-          r: @calc(5/21);
-          cx, cy: @Plot(r: 5.08; rotate: @calc(45/16));
+          r: $(5/21);
+          cx, cy: @Plot(r: 5.08; rotate: $(45/16));
           fill: #76b39d;
         }
 
@@ -409,10 +409,10 @@ export default {
     svg {
       viewBox: -50 -50 100 100;
       circle*300 {
-        fill: hsl(@calc(120-90*@sin.n), 80%, 50%);
+        fill: hsl($(120-90*@sin.n), 80%, 50%);
         r: @sqrt(@n/60);
-        cx: @calc(@n*.618^4 * cos(2π*@n*.618));
-        cy: @calc(@n*.618^4 * sin(2π*@n*.618));
+        cx: $(@n*.618^4 * cos(2π*@n*.618));
+        cy: $(@n*.618^4 * sin(2π*@n*.618));
       }
     }
   `),
@@ -535,12 +535,11 @@ export default {
 
       --color: blue;
 
-      --angle-a: π/180 * -80 - π/2;
-      --angle-b: π/180 * -45 - π/2;
-
-      --arc: @calc(50 * cos(@p(--angle-a))) @calc(50 * sin(@p(--angle-a)))
+      --a: π/180 * -80 - π/2;
+      --b: π/180 * -45 - π/2;
+      --arc: $(50 * cos(a)) $(50 * sin(a))
              A 50 50 0 0 1
-             @calc(50 * cos(@p(--angle-b))) @calc(50 * sin(@p(--angle-b)));
+             $(50 * cos(b)) $(50 * sin(b));
 
       circle {
         r: 50;
@@ -573,8 +572,8 @@ export default {
       fill: none;
       path*0-3 {
         d: @M0-3(
-          M @p.calc(12 - 6/4*@n) 12 @p 6
-          A @p.calc(6 - 6/4*@n) @p 0 1 0 6 @lp3
+          M @p.$(12 - 6/4*@n) 12 @p 6
+          A @p.$(6 - 6/4*@n) @p 0 1 0 6 @lp3
         );
         transform:
           translate(@pn(0 0, 24 0, 24 24, 0 24))
@@ -586,29 +585,23 @@ export default {
   'openai logo': read(`
     svg {
       viewBox: -50 -50 100 100 p 20;
-
       stroke-linecap: round;
       stroke: blue;
       fill: none;
 
-      --r: 14;
-      --r2: 22;
-      --x: @calc(@p(--r) * cos(π/6) * -1);
-      --y: @calc(@p(--r) * sin(π/6));
+      --x: 14 * cos(π/6) * -1;
+      --y: 14 * sin(π/6);
 
       g*6 {
         transform: rotate(@n(*60));
         path {
           stroke-width: 4.2;
-          d: M @calc(@p(--x) - 1) @p(--y)
-               @calc(@p(--x) - 1) @calc(@p(--y) * -3.4)
+          d: M $(x - 1) $y $(x - 1) $(-3.4y)
         }
         path {
           stroke-width: 6;
-          d: M @p(--x) @calc(@p(--y) * -3.4)
-               @calc(@p(--x) * -1) @calc(@p(--y) * -5.4)
-             A @p(--r2) @p 0 0 1
-               @calc(@p(--x) * -3.1) @calc(@p(--y) * -1.4);
+          d: M $x $(-3.4y) $(-x) $(-5.4y)
+             A 22 22 0 0 1 $(-3.1x) $(-1.4y);
         }
       }
     }
