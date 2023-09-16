@@ -365,7 +365,7 @@ export default {
       fill: defs pattern {
         viewBox: 0 0 8 8;
         patternTransform: rotate(-45);
-        width, height: 24%;
+        width, height: 25%;
         rect*4 {
           fill: @pn(--color);
           x, y: 0 @pn(0, 2, 6, 4);
