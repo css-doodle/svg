@@ -377,7 +377,7 @@ export default {
           fill: @pnr(--color);
           stroke-width: 1.5;
           stroke: defs radialgradient {
-            stop {offset: 1; stop-color: @pnr(--color2) }
+            stop {offset: .99; stop-color: @pnr(--color2) }
             stop {offset: 0; stop-color: @pn(--color) }
           }
         }
