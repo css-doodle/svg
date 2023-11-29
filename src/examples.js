@@ -259,11 +259,17 @@ export default {
   'patterns': read(`
     svg {
       viewBox: 0 0 1 1;
+      defs mask#circle {
+        circle {
+          r: 4.9;
+          fill: #fff;
+        }
+      }
       rect*2 {
         x, y: @pn(0, .049);
-        width, height: 100%;
+        width, height: @pn(1, .9);
         fill: defs pattern {
-          width, height: 10%;
+          width, height: @pn(.1, .1114);
           viewBox: -5 -5 10 10;
           g {
             circle*4 {
@@ -273,14 +279,9 @@ export default {
             }
             circle {
               r: 1.2;
-              fill: @pn(#D01C3B, #E0D31C)
+              fill: @pn(#D01C3B, #E0D31C);
             }
-            mask: defs mask {
-              circle {
-                r: 4.9;
-                fill: #fff;
-              }
-            }
+            mask: url(#circle);
           }
         }
       }
