@@ -128,12 +128,13 @@ export default {
 
   '99 bottles of beer': read(`
     svg {
-      viewBox: 0 0 50 1200;
+      viewBox: 0 0 16 $(99*5);
       overflow: visible;
       style max-height: inherit;
       foreignObject {
         width, height: 100%;
-        font-size: 2;
+        font-size: 1;
+        style line-height: 1;
         p*99-1 {
           content: \`
             @n bottles of beer on the wall, <br />
@@ -355,31 +356,33 @@ export default {
   `),
 
   'blob circles': read(`
-    --color: #f5f0e1, #ff6e40;
-    --color2: #1e3d59, #ffc13b, #ffcce7;
+    svg {
+      --color: #f5f0e1, #ff6e40;
+      --color2: #1e3d59, #ffc13b, #ffcce7;
 
-    viewBox: 0 0 1 1;
-    preserveAspectRatio: xMidYMid slice;
+      viewBox: 0 0 1 1;
+      preserveAspectRatio: xMidYMid slice;
 
-    rect {
-      width, height: 100%;
-      fill: defs pattern {
-        viewBox: 0 0 8 8;
-        patternTransform: rotate(-45);
-        width, height: 25%;
-        rect*4 {
-          fill: @pn(--color);
-          x, y: 0 @pn(0, 2, 6, 4);
-          width, height: 8 2;
-        }
-        circle*4 {
-          r: 1.25;
-          cx, cy: @pn(2 2, 6 2, 6 6, 2 6);
-          fill: @pnr(--color);
-          stroke-width: 1.5;
-          stroke: defs radialgradient {
-            stop {offset: .99; stop-color: @pnr(--color2) }
-            stop {offset: 0; stop-color: @pn(--color) }
+      rect {
+        width, height: 100%;
+        fill: defs pattern {
+          viewBox: 0 0 8 8;
+          patternTransform: rotate(-45);
+          width, height: 25%;
+          rect*4 {
+            fill: @pn(--color);
+            x, y: 0 @pn(0, 2, 6, 4);
+            width, height: 8 2;
+          }
+          circle*4 {
+            r: 1.25;
+            cx, cy: @pn(2 2, 6 2, 6 6, 2 6);
+            fill: @pnr(--color);
+            stroke-width: 1.5;
+            stroke: defs radialgradient {
+              stop {offset: .99; stop-color: @pnr(--color2) }
+              stop {offset: 0; stop-color: @pn(--color) }
+            }
           }
         }
       }
@@ -419,10 +422,10 @@ export default {
   `),
 
   'planet': read(`
-    --color-a: pink;
-    --color-b: #322EA2;
-
     svg {
+      --color-a: pink;
+      --color-b: #322EA2;
+
       viewBox: -5 -5 10 10;
       g {
         mask: defs mask {
