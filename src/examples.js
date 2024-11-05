@@ -622,6 +622,78 @@ export default {
       }
     }
   `),
+
+  'icons': read(`
+    /* Icons from https://fonts.google.com/knowledge */
+
+    svg {
+      viewBox: 0 0 120 20 p 1;
+
+      stroke: #000;
+      stroke-width: .5;
+      fill: none;
+
+      /* outlines */
+      rect*5 {
+        width, height: 20;
+        x, y: @n(*25, -25) 0;
+        stroke-dasharray: 1 1;
+        stroke: red;
+        stroke-width: .2;
+      }
+
+      use {
+        href: defs g {
+          path {
+            d: M 12 20 A 6 6 0 1 1 12 0 z
+               M 18 16 A 6 6 0 0 1 18 4 z
+          }
+        }
+      }
+
+      use {
+        href: defs g {
+          transform: translate(25, 0);
+          circle*2x2 {
+            r, cx, cy: 5 @nx(*10, -5) @ny(*10, -5)
+          }
+        }
+      }
+
+      use {
+        href: defs g {
+          transform: translate(50, 0);
+          path {
+             d: M 0 .5 0 10 0 20 10 20
+                  0 10 0 .5 19.5 20 10 20;
+          }
+        }
+      }
+
+      use {
+        href: defs g {
+          transform: translate(75, 0);
+          line {
+            x1, y1, x2, y2: 10 0 10 20;
+          }
+          circle*2 {
+            cx, cy: 10 10;
+            r: @n(*5);
+          }
+        }
+      }
+
+      use {
+        href: defs g {
+          transform: translate(100, 0);
+          path {
+            d: M 0 20 A 20 20 0 0 1 20 0 L 20 20 z
+               M 10 20 A 10 10 0 0 1 20 10
+          }
+        }
+      }
+    }
+  `),
 }
 
 function read(input) {
