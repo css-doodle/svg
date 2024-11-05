@@ -637,15 +637,14 @@ export default {
       g rect*5 {
         width, height: 20;
         x, y: @n(*25, -25) 0;
-        stroke-dasharray: 1 1;
-        stroke: red;
+        stroke-dasharray: .5;
         stroke-width: .2;
       }
 
       g {
         path {
           d: M 12 20 A 6 6 0 1 1 12 0 z
-             M 18 16 A 6 6 0 0 1 18 4 z
+             M 18 16 A 6 6 0 0 1 18 4 z;
         }
       }
 
@@ -671,8 +670,7 @@ export default {
           x1, y1, x2, y2: 10 0 10 20;
         }
         circle*2 {
-          cx, cy: 10 10;
-          r: @n(*5);
+          r, cx, cy: @n(*5) 10 10;
         }
       }
 
@@ -680,7 +678,7 @@ export default {
         transform: translate(100, 0);
         path {
           d: M 0 20 A 20 20 0 0 1 20 0 L 20 20 z
-             M 8.5 20 A 11.5 11.5 0 0 1 20 8.5
+             M 8.5 20 A 11.5 11.5 0 0 1 20 8.5;
         }
       }
     }
