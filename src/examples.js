@@ -663,9 +663,10 @@ export default {
       use {
         href: defs g {
           transform: translate(50, 0);
+          stroke-miterlimit: 1;
           path {
-             d: M 0 .5 0 10 0 20 10 20
-                  0 10 0 .5 19.5 20 10 20;
+             d: M 0 0 0 10 0 20 10 20
+                  0 10 0 0 20 20 10 20;
           }
         }
       }
@@ -688,7 +689,7 @@ export default {
           transform: translate(100, 0);
           path {
             d: M 0 20 A 20 20 0 0 1 20 0 L 20 20 z
-                M 8.5 20 A 11.5 11.5 0 0 1 20 8.5
+               M 8.5 20 A 11.5 11.5 0 0 1 20 8.5
           }
         }
       }
