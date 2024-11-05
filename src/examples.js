@@ -688,7 +688,7 @@ export default {
           transform: translate(100, 0);
           path {
             d: M 0 20 A 20 20 0 0 1 20 0 L 20 20 z
-               M 10 20 A 10 10 0 0 1 20 10
+                M 8.5 20 A 11.5 11.5 0 0 1 20 8.5
           }
         }
       }
