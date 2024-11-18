@@ -683,6 +683,47 @@ export default {
       }
     }
   `),
+
+  'css logo': read(`
+    svg {
+      viewbox: 0 0 10 10;
+
+      title {
+        content: "CSS LOGO";
+      }
+
+      /* background */
+      path {
+        fill: rebeccapurple;
+        d: M 0 0 8.4 0 Q 10 0 10 1.6
+           L 10 8.4 Q 10 10 8.4 10
+           L 1.6 10 Q 0 10 0 8.4
+      }
+
+      g {
+        stroke: #fff;
+        stroke-width: .75;
+        fill: none;
+
+        /* C */
+        path {
+          d: M 4.25 6.5
+             c 0 -1 -1.25 -1 -1.25 0
+             l 0 1.5
+             c 0 1 1.25 1 1.25 0
+        }
+
+        /* SS */
+        path*2 {
+          d: M @pn(8.75, 6.5) 6.5
+             c 0 -1 -1.25 -1 -1.25 0
+             s 1.25 .5 1.25 1.5
+             c 0 1 -1.25 1 -1.25 0
+        }
+      }
+    }
+  `),
+
 }
 
 function read(input) {
