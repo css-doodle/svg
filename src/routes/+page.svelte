@@ -74,7 +74,7 @@
 
   let mounted = false;
 
-  $: svgCode = svg(code);
+  $: svgCode = prettySVG(svg(code));
 
   $: full = /preserveAspectRatio/i.test(code);
 
@@ -82,6 +82,32 @@
     code = e.detail;
     if (!isNull(codeFromQuery)) {
       saveToURL();
+    }
+  }
+
+  function prettySVG(input) {
+    try {
+      let xmlDoc = new DOMParser().parseFromString(input, 'application/xml');
+      let xsltDoc = new DOMParser().parseFromString(`
+        <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+          <xsl:strip-space elements="*"/>
+          <xsl:template match="para[content-style][not(text())]">
+            <xsl:value-of select="normalize-space(.)"/>
+          </xsl:template>
+          <xsl:template match="node()|@*">
+            <xsl:copy><xsl:apply-templates select="node()|@*"/></xsl:copy>
+          </xsl:template>
+          <xsl:output indent="yes"/>
+        </xsl:stylesheet>
+      `,'application/xml');
+
+      let xsltProcessor = new XSLTProcessor();
+      xsltProcessor.importStylesheet(xsltDoc);
+      let resultDoc = xsltProcessor.transformToDocument(xmlDoc);
+      let resultXml = new XMLSerializer().serializeToString(resultDoc);
+      return resultXml;
+    } catch (e) {
+      return input;
     }
   }
 
@@ -319,6 +345,7 @@
 
   .svg {
     display: block;
+    place-items: normal;
     padding: 1.6em;
   }
 
