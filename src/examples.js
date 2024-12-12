@@ -724,6 +724,26 @@ export default {
     }
   `),
 
+  'servo logo': read(`
+    svg {
+      viewBox: -50 -50 100 100 p 12;
+
+      --r: 50;
+      --x: -2.4;
+      --d: .618r;
+      --y: 1.618x;
+
+      path*5 {
+        transform-origin: $x $y;
+        transform: translate($(-1x) $(-1y)) rotate(@n(*72));
+        fill: @pn.Mirror(#1292e8,#009d9a,#42be65);
+        d: M 0 $d 0 $r
+           A $r $r 0 0 0 $(r*cos(π/10)) $(r*sin(π/10))
+           L $(d*sin(π/2.5)) $(d*cos(π/2.5));
+      }
+    }
+  `)
+
 }
 
 function read(input) {
