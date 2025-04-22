@@ -218,6 +218,11 @@
     place-items: center;
     padding: 2em 0;
     overflow: auto;
+    scrollbar-color: #fff0 #fff0;
+  }
+
+  .example-list:hover {
+    scrollbar-color: #fff3 #fff0;
   }
 
   .example-list ul {
