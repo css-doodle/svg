@@ -17,7 +17,7 @@
   "dependencies": {
     "@codemirror/lang-css": "^6.0.0",
     "codemirror": "^6.0.1",
-    "css-doodle": "0.40.2"
+    "css-doodle": "0.46.0"
   },
   "engines": {
     "node": ">= 18.0.0"
