@@ -742,8 +742,41 @@ export default {
            L $(d*sin(π/2.5)) $(d*cos(π/2.5));
       }
     }
-  `)
+  `),
 
+  'ubuntu logo': read(`
+    --c: #f47421;
+
+    svg {
+      viewBox: -5 -5 10 10;
+      circle {
+        r: 4.5;
+        fill: @p(--c);
+      }
+
+      circle {
+        r: 2.1825;
+        stroke: #fff;
+        stroke-width: .85;
+        fill: none;
+      }
+
+      circle*3 {
+        r: .725;
+        fill: #fff;
+        cx, cy: @Plot(r: 3.064; rotate: 60);
+        stroke: @p(--c);
+        stroke-width: .25;
+      }
+
+      path {
+        fill: none;
+        stroke-width: .32;
+        stroke: @p(--c);
+        d: @M3(M 0 0 @Plot(r: 3.1));
+      }
+    }
+  `)
 }
 
 function read(input) {
