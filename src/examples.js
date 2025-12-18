@@ -799,7 +799,6 @@ export default {
           }
         }
       }
-
       defs pattern#pattern {
         viewBox: 0 0 10 10;
         width, height: @p(--size);
@@ -815,7 +814,6 @@ export default {
             rotate(@pn(0, 90, -90, 180));
         }
       }
-
       rect {
         width, height: 100%;
         fill: url(#pattern);
