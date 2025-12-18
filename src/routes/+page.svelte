@@ -289,6 +289,7 @@
     flex: 1;
     overflow: auto;
     background: var(--dark);
+    scrollbar-color: #fff3 #fff0;;
   }
 
   select {
