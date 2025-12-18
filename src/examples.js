@@ -787,7 +787,7 @@ export default {
       --fc: #1f2e36;
       --size: 10%;
 
-      defs symbol#circle {
+      defs symbol#circles {
         viewBox: 0 0 10 10;
         g {
           stroke-width: 1;
@@ -799,24 +799,26 @@ export default {
           }
         }
       }
+
+      defs pattern#pattern {
+        viewBox: 0 0 10 10;
+        width, height: @p(--size);
+        rect {
+          width, height: 100%;
+          fill: @p(--bc);
+        }
+        use*4 {
+          href: #circles;
+          width, height: 50%;
+          transform:
+            translate(@pn(0, 10 0, 0 10, 10 10))
+            rotate(@pn(0, 90, -90, 180));
+        }
+      }
+
       rect {
         width, height: 100%;
-        fill: defs pattern {
-          viewBox: 0 0 10 10;
-          width, height: @p(--size);
-          rect {
-            x, y: 0;
-            width, height: 100%;
-            fill: @p(--bc);
-          }
-          use*4 {
-            href: #circle;
-            width, height: 50%;
-            transform:
-              translate(@pn(0, 10 0, 0 10, 10 10))
-              rotate(@pn(0, 90, -90, 180));
-          }
-        }
+        fill: url(#pattern);
       }
     }
   `),
