@@ -776,7 +776,50 @@ export default {
         d: @M3(M 0 0 @Plot(r: 3.1));
       }
     }
-  `)
+  `),
+
+  'classic pattern': read(`
+    svg {
+      viewBox: 0 0 10 10;
+      preserveAspectRatio: xMidYMid slice;
+
+      --bc: #f9df90;
+      --fc: #1f2e36;
+      --size: 10%;
+
+      defs symbol#circle {
+        viewBox: 0 0 10 10;
+        g {
+          stroke-width: 1;
+          stroke: @p(--fc);
+          fill: @p(--bc);
+          circle*10-1 {
+            cx, cy: @match(n<6, 0 10, 10 0);
+            r: $(1 + @n.match(n<6, -1, -6) * 2);
+          }
+        }
+      }
+      rect {
+        width, height: 100%;
+        fill: defs pattern {
+          viewBox: 0 0 10 10;
+          width, height: @p(--size);
+          rect {
+            x, y: 0;
+            width, height: 100%;
+            fill: @p(--bc);
+          }
+          use*4 {
+            href: #circle;
+            width, height: 50%;
+            transform:
+              translate(@pn(0, 10 0, 0 10, 10 10))
+              rotate(@pn(0, 90, -90, 180));
+          }
+        }
+      }
+    }
+  `),
 }
 
 function read(input) {
