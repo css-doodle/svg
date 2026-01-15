@@ -117,11 +117,7 @@ export default {
           r: seq(20, 40);
           rotate: 18;
         );
-        fill: defs linearGradient {
-          gradientTransform: rotate(30);
-          stop { offset: 50%; stop-color: deeppink }
-          stop { offset: 100%; stop-color: yellow }
-        }
+        fill: @linearGradient(30, deeppink 50%, yellow 100%);
       }
     }
   `),
@@ -379,10 +375,10 @@ export default {
             cx, cy: @pn(2 2, 6 2, 6 6, 2 6);
             fill: @pnr(--color);
             stroke-width: 1.5;
-            stroke: defs radialgradient {
-              stop {offset: .99; stop-color: @pnr(--color2) }
-              stop {offset: 0; stop-color: @pn(--color) }
-            }
+            stroke: defs @radialGradient(
+              @pnr(--color2) .99,
+              @pn(--color) 0
+            );
           }
         }
       }
@@ -820,6 +816,20 @@ export default {
       }
     }
   `),
+
+  'gradient': read(`
+    svg {
+      viewBox: -5 -5 10 10;
+      ellipse*100 {
+        fill: none;
+        rx, ry: 4, $(1 + @nN(*3));
+        transform: rotate(-@nN(ease-out, *180));
+        stroke: @linearGradient(
+         #f59aa3, #f5e4c3, #34a7b2, #5b2e35
+        );
+      }
+    }
+  `)
 }
 
 function read(input) {
