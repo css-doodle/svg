@@ -822,10 +822,10 @@ export default {
       viewBox: -5 -5 10 10;
       ellipse*100 {
         fill: none;
-        rx, ry: 4, $(1 + @nN(*3));
-        transform: rotate(-@nN(ease-out, *180));
+        rx, ry: 4 $(@nN(ease-out, *4));
+        transform: rotate(-@nN(ease-out, *240));
         stroke: @linearGradient(
-         #f59aa3, #f5e4c3, #34a7b2, #5b2e35
+          #92e6e6,#fff9af,#d65d7a,#524c84
         );
       }
     }
